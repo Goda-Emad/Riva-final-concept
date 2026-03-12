@@ -3,1000 +3,953 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ريفا الصحي — الرؤية الكاملة</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>منصة ريفا الصحي — نظرة عامة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#03080f;--bg2:#070f1a;--bg3:#0c1822;
-  --teal:#00bfa5;--teal-l:#1de9b6;--green:#00e676;
-  --amber:#ffab00;--red:#ff5252;--blue:#448aff;
-  --violet:#7c4dff;--rose:#ff4081;--pink:#f06292;
-  --border:rgba(0,191,165,.1);--border2:rgba(0,191,165,.22);
-  --text:#cde8e2;--muted:#4d7a72;
-}
-body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+  :root {
+    --green-deep: #0a2e1a;
+    --green-mid: #0f4a2a;
+    --green-bright: #1a7a42;
+    --green-accent: #22c55e;
+    --green-glow: #4ade80;
+    --gold: #f5c842;
+    --gold-light: #fde68a;
+    --cream: #faf7f0;
+    --white: #ffffff;
+    --text-muted: #94a3b8;
+    --card-bg: rgba(15, 74, 42, 0.4);
+    --border: rgba(34, 197, 94, 0.2);
+  }
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(3,8,15,.85);
-  border-bottom:1px solid var(--border);
-  backdrop-filter:blur(20px);
-  padding:0 24px;
-  display:flex;align-items:center;justify-content:space-between;
-  height:60px;
-}
-.nav-logo{
-  font-family:'Tajawal',sans-serif;font-size:1.3rem;font-weight:900;
-  background:linear-gradient(135deg,var(--teal-l),var(--green));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  display:flex;align-items:center;gap:8px;
-}
-.nav-tabs{display:flex;gap:4px}
-.nav-tab{
-  padding:6px 14px;border-radius:8px;border:none;
-  background:transparent;color:var(--muted);
-  font-family:'Cairo',sans-serif;font-size:.75rem;font-weight:600;
-  cursor:pointer;transition:all .2s;
-}
-.nav-tab:hover{color:var(--text);background:rgba(255,255,255,.04)}
-.nav-tab.active{
-  color:var(--teal-l);
-  background:rgba(0,191,165,.1);
-  border:1px solid rgba(0,191,165,.2);
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ── PAGES ── */
-.page{display:none;padding-top:60px;min-height:100vh}
-.page.active{display:block}
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--green-deep);
+    color: var(--white);
+    overflow-x: hidden;
+    position: relative;
+  }
 
-/* ── HERO ── */
-.hero{
-  min-height:calc(100vh - 60px);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:60px 24px;position:relative;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 40%,rgba(0,191,165,.07) 0%,transparent 60%),
-    radial-gradient(ellipse 40% 40% at 80% 80%,rgba(68,138,255,.05) 0%,transparent 50%);
-}
-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.3}
+  /* Background texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(26,122,66,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(10,46,26,0.8) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 60% 10%, rgba(34,197,94,0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.hero-content{position:relative;z-index:1}
-.logo-box{
-  width:100px;height:100px;border-radius:24px;
-  background:linear-gradient(135deg,var(--teal),var(--green));
-  display:grid;place-items:center;font-size:2.8rem;
-  margin:0 auto 28px;
-  box-shadow:0 0 60px rgba(0,191,165,.35),0 0 120px rgba(0,191,165,.12);
-  animation:glow 3s ease-in-out infinite;
-}
-@keyframes glow{0%,100%{box-shadow:0 0 60px rgba(0,191,165,.35)}50%{box-shadow:0 0 90px rgba(0,191,165,.6)}}
+  /* Grid overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(34,197,94,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34,197,94,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.hero h1{
-  font-family:'Tajawal',sans-serif;
-  font-size:clamp(3rem,8vw,5.5rem);
-  font-weight:900;color:#fff;line-height:1;
-  margin-bottom:10px;
-}
-.hero h1 span{
-  background:linear-gradient(135deg,var(--teal-l),var(--green));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.hero-sub{font-size:clamp(.9rem,2vw,1.2rem);color:var(--muted);margin-bottom:36px;line-height:1.7;max-width:580px;margin-left:auto;margin-right:auto}
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
 
-.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:48px}
-.pl{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:7px 16px;border-radius:30px;
-  font-size:.72rem;font-weight:700;border:1px solid;
-}
-.pl.t{background:rgba(0,191,165,.1);border-color:rgba(0,191,165,.3);color:var(--teal-l)}
-.pl.g{background:rgba(0,230,118,.08);border-color:rgba(0,230,118,.25);color:#69f0ae}
-.pl.a{background:rgba(255,171,0,.08);border-color:rgba(255,171,0,.25);color:#ffd740}
-.pl.b{background:rgba(68,138,255,.08);border-color:rgba(68,138,255,.25);color:#82b1ff}
-.pl.v{background:rgba(124,77,255,.08);border-color:rgba(124,77,255,.25);color:#b388ff}
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+  }
 
-/* KPI row */
-.kpi-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:40px}
-.kpi{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:14px;padding:18px 24px;text-align:center;min-width:130px;
-}
-.kpi-n{
-  font-family:'Tajawal',sans-serif;font-size:1.8rem;font-weight:900;
-  background:linear-gradient(135deg,var(--teal-l),var(--green));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.kpi-l{font-size:.65rem;color:var(--muted);margin-top:3px}
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(34,197,94,0.1);
+    border: 1px solid rgba(34,197,94,0.3);
+    border-radius: 100px;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.8rem;
+    color: var(--green-glow);
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    animation: fadeDown 0.8s ease both;
+  }
 
-/* ── LAYOUT ── */
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-.section{padding:80px 0}
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:0 24px}
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--green-accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
 
-.sec-lbl{
-  font-size:.62rem;font-weight:800;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--teal);
-  display:flex;align-items:center;gap:8px;margin-bottom:12px;
-}
-.sec-lbl::before{content:'';width:24px;height:1px;background:var(--teal);opacity:.5;display:inline-block}
-.sec-h{font-family:'Tajawal',sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;margin-bottom:8px}
-.sec-p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:40px}
+  .hero-logo {
+    font-family: 'Tajawal', sans-serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--white) 0%, var(--green-glow) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
 
-/* ── CARDS ── */
-.card{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:18px;padding:24px;
-  position:relative;overflow:hidden;
-  transition:transform .25s,border-color .25s;
-}
-.card:hover{transform:translateY(-4px);border-color:var(--border2)}
-.card-top{position:absolute;top:0;left:0;right:0;height:2px;background:var(--ct,var(--teal))}
+  .hero-subtitle-ar {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--green-glow);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
 
-/* ── VISION GRID ── */
-.v2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
-@media(max-width:600px){.v2{grid-template-columns:1fr}}
-.vi{font-size:.78rem;color:var(--muted);line-height:1.8;margin-top:8px}
-.vi-list{list-style:none;margin-top:8px}
-.vi-list li{font-size:.75rem;color:var(--muted);padding:4px 0;display:flex;align-items:flex-start;gap:7px;border-bottom:1px solid rgba(255,255,255,.03)}
-.vi-list li::before{content:'→';color:var(--teal);font-size:.6rem;margin-top:3px;flex-shrink:0}
-.vc-icon{font-size:1.8rem;margin-bottom:10px}
-.vc-title{font-size:.92rem;font-weight:800;color:#fff;margin-bottom:6px}
+  .hero-tagline {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: rgba(255,255,255,0.6);
+    max-width: 600px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s ease 0.6s both;
+  }
 
-/* quote */
-.quote-box{
-  background:linear-gradient(135deg,rgba(0,191,165,.08),rgba(0,230,118,.04));
-  border:1px solid var(--border2);border-radius:18px;
-  padding:36px;text-align:center;margin-bottom:32px;
-}
-.quote-text{
-  font-family:'Tajawal',sans-serif;
-  font-size:clamp(1.1rem,2.5vw,1.5rem);
-  font-weight:700;color:#fff;line-height:1.6;margin-bottom:10px;
-}
-.quote-by{font-size:.72rem;color:var(--muted)}
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.8s both;
+  }
 
-/* impact */
-.impact3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:500px){.impact3{grid-template-columns:1fr}}
-.imp{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
-.imp-n{font-family:'Tajawal',sans-serif;font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--teal-l),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.imp-l{font-size:.68rem;color:var(--muted);margin-top:3px}
+  .stat {
+    text-align: center;
+  }
 
-/* ── FEATURES TABS ── */
-.feat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-.feat-tab{
-  padding:7px 16px;border-radius:10px;border:1px solid var(--border);
-  background:transparent;color:var(--muted);
-  font-family:'Cairo',sans-serif;font-size:.73rem;font-weight:600;
-  cursor:pointer;transition:all .2s;
-}
-.feat-tab:hover{color:var(--text);border-color:var(--border2)}
-.feat-tab.active{background:rgba(0,191,165,.12);border-color:rgba(0,191,165,.3);color:var(--teal-l)}
+  .stat-number {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--green-accent);
+    line-height: 1;
+  }
 
-.feat-panel{display:none}
-.feat-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:16px;animation:fade-in .3s ease}
-@media(max-width:600px){.feat-panel.active{grid-template-columns:1fr}}
-@keyframes fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+  }
 
-.fc{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;transition:transform .2s,border-color .2s}
-.fc:hover{transform:translateY(-3px);border-color:var(--border2)}
-.fc-top{position:absolute;top:0;left:0;right:0;height:2px;background:var(--fct,var(--teal));border-radius:16px 16px 0 0}
-.fc-icon{font-size:1.8rem;margin-bottom:10px}
-.fc h4{font-size:.88rem;font-weight:800;color:#fff;margin-bottom:6px}
-.fc p{font-size:.73rem;color:var(--muted);line-height:1.6}
-.fc-badge{
-  display:inline-block;font-size:.6rem;font-weight:700;
-  padding:2px 9px;border-radius:10px;margin-top:10px;
-  background:rgba(0,191,165,.1);border:1px solid rgba(0,191,165,.2);color:var(--teal-l);
-}
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    animation: bounce 2s infinite;
+  }
 
-/* ── AI MODELS ── */
-.models-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px}
-@media(max-width:600px){.models-grid{grid-template-columns:1fr}}
-.model-card{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:18px;padding:24px;
-  position:relative;overflow:hidden;
-  transition:transform .25s,border-color .25s;
-}
-.model-card:hover{transform:translateY(-4px);border-color:var(--border2)}
-.mc-line{position:absolute;top:0;left:0;right:0;height:3px}
-.mc-icon{font-size:2rem;margin-bottom:12px}
-.mc-name{font-size:1rem;font-weight:800;color:#fff;margin-bottom:4px}
-.mc-algo{font-size:.68rem;font-weight:700;letter-spacing:.08em;margin-bottom:10px}
-.mc-desc{font-size:.74rem;color:var(--muted);line-height:1.6;margin-bottom:12px}
-.mc-acc{
-  display:flex;align-items:center;gap:10px;
-  background:rgba(0,0,0,.2);border-radius:10px;padding:10px 14px;
-}
-.acc-bar-wrap{flex:1;height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
-.acc-bar{height:100%;border-radius:3px;background:var(--mc,var(--teal));transition:width 1s ease}
-.acc-n{font-family:'Tajawal',sans-serif;font-size:.85rem;font-weight:700;color:#fff;white-space:nowrap}
-.mc-files{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
-.mc-file{font-size:.58rem;padding:2px 8px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);color:var(--muted);font-family:monospace}
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--green-accent), transparent);
+  }
 
-/* explain box */
-.explain-box{
-  background:linear-gradient(135deg,rgba(124,77,255,.08),rgba(68,138,255,.05));
-  border:1px solid rgba(124,77,255,.2);
-  border-radius:18px;padding:28px;
-}
-.explain-box h3{font-size:1rem;font-weight:800;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:8px}
-.explain-box p{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:16px}
-.explain-demo{background:var(--bg3);border-radius:12px;padding:16px}
-.explain-item{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.explain-item:last-child{margin-bottom:0}
-.explain-factor{font-size:.72rem;color:var(--text);min-width:100px}
-.explain-bar-wrap{flex:1;height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden}
-.explain-bar{height:100%;border-radius:4px}
-.explain-val{font-size:.68rem;font-weight:700;min-width:35px;text-align:left}
+  /* ===== SECTION ===== */
+  section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+  }
 
-/* ── OFFLINE FLOW ── */
-.offline-wrap{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:18px;padding:28px;margin-bottom:24px;
-}
-.flow2{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}
-@media(max-width:500px){.flow2{grid-template-columns:1fr}}
-.flow2-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px}
-.flow2-card h4{font-size:.82rem;font-weight:800;margin-bottom:6px}
-.flow2-card p{font-size:.7rem;color:var(--muted);line-height:1.5}
-.flow2-arr{font-size:1.4rem;color:var(--teal);text-align:center}
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--green-accent);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
-.risk3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media(max-width:480px){.risk3{grid-template-columns:1fr}}
-.rc{border-radius:14px;padding:18px;text-align:center;border:1px solid}
-.rc.g{background:rgba(0,230,118,.06);border-color:rgba(0,230,118,.2)}
-.rc.a{background:rgba(255,171,0,.06);border-color:rgba(255,171,0,.2)}
-.rc.r{background:rgba(255,82,82,.06);border-color:rgba(255,82,82,.2)}
-.rc-ico{font-size:1.6rem;margin-bottom:6px}
-.rc-lv{font-size:.8rem;font-weight:800;margin-bottom:3px}
-.rc.g .rc-lv{color:#69f0ae}.rc.a .rc-lv{color:#ffd740}.rc.r .rc-lv{color:#ff8a80}
-.rc-pct{font-family:'Tajawal',sans-serif;font-size:1.3rem;font-weight:900;margin-bottom:3px}
-.rc-act{font-size:.65rem;color:var(--muted)}
+  .section-label::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--green-accent);
+  }
 
-/* ── TEAM PAGE ── */
-.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-.tc{background:var(--bg2);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:transform .25s,box-shadow .25s}
-.tc:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
-.tc-head{padding:28px 22px 22px;position:relative;overflow:hidden}
-.tc-head::before{content:'';position:absolute;inset:0;background:var(--th-bg)}
-.tc-head::after{content:'';position:absolute;top:-40px;left:-40px;width:130px;height:130px;border-radius:50%;background:var(--th-glow);filter:blur(30px)}
-.tc-star{position:absolute;top:14px;left:14px;font-size:.58rem;font-weight:700;padding:3px 9px;border-radius:15px;background:var(--th-sbg);color:var(--th-c);border:1px solid var(--th-b);z-index:1}
-.tc-av{width:66px;height:66px;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;background:var(--th-avbg);border:1px solid var(--th-b);margin-bottom:14px;position:relative;z-index:1}
-.tc-name{font-family:'Tajawal',sans-serif;font-size:1.2rem;font-weight:900;color:#fff;position:relative;z-index:1;margin-bottom:3px}
-.tc-role{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--th-c);position:relative;z-index:1}
-.tc-body{padding:18px 22px 22px}
-.tc-desc{font-size:.75rem;color:var(--muted);line-height:1.7;margin-bottom:14px}
-.tc-tasks{list-style:none}
-.tc-tasks li{font-size:.72rem;color:var(--muted);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:flex-start;gap:7px;line-height:1.4}
-.tc-tasks li:last-child{border-bottom:none}
-.tt{flex-shrink:0;font-size:.56rem;font-weight:700;padding:2px 7px;border-radius:8px;margin-top:1px}
-.tt-ai{background:rgba(0,191,165,.15);color:var(--teal-l)}
-.tt-fe{background:rgba(68,138,255,.15);color:#82b1ff}
-.tt-bz{background:rgba(255,171,0,.15);color:#ffd740}
-.tt-md{background:rgba(255,64,129,.15);color:#ff80ab}
-.tt-sh{background:rgba(255,255,255,.07);color:var(--muted)}
-.tc-skills{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
-.sk{font-size:.6rem;font-weight:600;padding:3px 9px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);color:var(--text)}
+  .section-title {
+    font-family: 'Tajawal', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
 
-/* member themes */
-.tc-goda{--th-bg:linear-gradient(135deg,rgba(0,191,165,.14),rgba(0,230,118,.06));--th-glow:rgba(0,191,165,.1);--th-avbg:rgba(0,191,165,.12);--th-b:rgba(0,191,165,.3);--th-c:var(--teal-l);--th-sbg:rgba(0,191,165,.15);border-color:rgba(0,191,165,.2)}
-.tc-nada{--th-bg:linear-gradient(135deg,rgba(68,138,255,.14),rgba(124,77,255,.06));--th-glow:rgba(68,138,255,.1);--th-avbg:rgba(68,138,255,.12);--th-b:rgba(68,138,255,.3);--th-c:#82b1ff;--th-sbg:rgba(68,138,255,.15);border-color:rgba(68,138,255,.2)}
-.tc-mo{--th-bg:linear-gradient(135deg,rgba(255,171,0,.12),rgba(255,82,82,.05));--th-glow:rgba(255,171,0,.08);--th-avbg:rgba(255,171,0,.12);--th-b:rgba(255,171,0,.3);--th-c:#ffd740;--th-sbg:rgba(255,171,0,.15);border-color:rgba(255,171,0,.2)}
-.tc-dr{--th-bg:linear-gradient(135deg,rgba(255,64,129,.12),rgba(255,82,82,.05));--th-glow:rgba(255,64,129,.08);--th-avbg:rgba(255,64,129,.12);--th-b:rgba(255,64,129,.3);--th-c:#ff80ab;--th-sbg:rgba(255,64,129,.15);border-color:rgba(255,64,129,.2)}
+  .section-title span {
+    color: var(--green-accent);
+  }
 
-/* ── ROADMAP ── */
-.rm{display:flex;flex-direction:column;gap:0}
-.rm-row{display:grid;grid-template-columns:90px 1fr;align-items:stretch}
-.rm-l{display:flex;flex-direction:column;align-items:center;padding:0 16px}
-.rm-wk{font-size:.58rem;font-weight:800;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;padding:18px 0 6px;white-space:nowrap}
-.rm-dot{width:11px;height:11px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(0,191,165,.5);flex-shrink:0}
-.rm-line{flex:1;width:2px;background:var(--border);margin:0 auto}
-.rm-r{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin:6px 0}
-.rm-title{font-size:.88rem;font-weight:800;color:#fff;margin-bottom:8px}
-.rm-items{display:flex;flex-wrap:wrap;gap:6px}
-.rmi{font-size:.67rem;padding:3px 10px;border-radius:10px;background:rgba(0,191,165,.07);border:1px solid rgba(0,191,165,.13);color:var(--muted)}
-.rmi.you{background:rgba(0,191,165,.14);border-color:rgba(0,191,165,.28);color:var(--teal-l);font-weight:700}
-.rmi.fin{background:rgba(255,171,0,.14);border-color:rgba(255,171,0,.28);color:#ffd740;font-weight:700}
+  .section-desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 600px;
+  }
 
-/* footer */
-.foot{text-align:center;padding:50px 24px 70px;border-top:1px solid var(--border)}
-.foot-logo{font-family:'Tajawal',sans-serif;font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--teal-l),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
-.foot-sub{font-size:.72rem;color:var(--muted)}
+  /* ===== PROBLEM ===== */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .problem-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .problem-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34,197,94,0.5);
+  }
+
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle, rgba(34,197,94,0.15), transparent 70%);
+  }
+
+  .problem-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .problem-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+
+  .problem-text {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+
+  /* ===== SOLUTION ===== */
+  .solution-phases {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .phase {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    transition: border-color 0.3s;
+  }
+
+  .phase:hover { border-color: rgba(34,197,94,0.4); }
+
+  .phase-num {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--green-bright), var(--green-accent));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .phase-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--green-glow);
+  }
+
+  .phase-desc {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  .phase-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    background: rgba(34,197,94,0.1);
+    border: 1px solid rgba(34,197,94,0.2);
+    border-radius: 100px;
+    padding: 0.2rem 0.75rem;
+    font-size: 0.72rem;
+    color: var(--green-glow);
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== TEAM ===== */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .member-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .member-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(34,197,94,0.5);
+  }
+
+  .member-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--green-accent), transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+
+  .member-card:hover::after { transform: scaleX(1); }
+
+  .member-avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--green-bright), var(--green-accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin: 0 auto 1rem;
+    border: 2px solid rgba(34,197,94,0.3);
+    position: relative;
+  }
+
+  .member-avatar .status {
+    position: absolute;
+    bottom: 2px; left: 2px;
+    width: 12px; height: 12px;
+    background: var(--green-accent);
+    border-radius: 50%;
+    border: 2px solid var(--green-deep);
+  }
+
+  .member-name {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+  }
+
+  .member-role {
+    font-size: 0.75rem;
+    color: var(--green-accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .member-tasks {
+    list-style: none;
+    text-align: right;
+  }
+
+  .member-tasks li {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .member-tasks li::before {
+    content: '◆';
+    color: var(--green-accent);
+    font-size: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 24px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--green-accent), transparent);
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 48px;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    align-items: start;
+  }
+
+  .timeline-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+
+  .timeline-content:hover { border-color: rgba(34,197,94,0.4); }
+
+  .timeline-week {
+    font-size: 0.7rem;
+    color: var(--green-accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-tasks {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+
+  .timeline-dot {
+    width: 48px; height: 48px;
+    background: var(--green-mid);
+    border: 2px solid var(--green-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== TECH STACK ===== */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .tech-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .tech-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(34,197,94,0.4);
+  }
+
+  .tech-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+  .tech-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .tech-use {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-logo {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--green-glow), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .footer-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    background: rgba(34,197,94,0.1);
+    border: 1px solid rgba(34,197,94,0.2);
+    border-radius: 100px;
+    padding: 0.3rem 1rem;
+    font-size: 0.72rem;
+    color: var(--green-accent);
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .hero-stats { gap: 1.5rem; }
+    .phase { grid-template-columns: 1fr; }
+    .timeline::before { display: none; }
+    .timeline-item { grid-template-columns: 1fr; }
+    .timeline-dot { display: none; }
+  }
 </style>
 </head>
 <body>
 
-<canvas id="cv"></canvas>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">🏥 ريفا</div>
-  <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showPage('home',this)">الرئيسية</button>
-    <button class="nav-tab" onclick="showPage('features',this)">المميزات</button>
-    <button class="nav-tab" onclick="showPage('ai',this)">نماذج AI</button>
-    <button class="nav-tab" onclick="showPage('team',this)">الفريق</button>
-    <button class="nav-tab" onclick="showPage('roadmap',this)">الخطة</button>
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    HSIL Hack-a-thon · أبريل 2026
   </div>
-</nav>
 
-<!-- ══════════════════════
-     PAGE: HOME
-══════════════════════ -->
-<div id="page-home" class="page active">
-  <section class="hero">
-    <div class="hero-content">
-      <div class="logo-box">🏥</div>
-      <div style="font-size:.7rem;font-weight:700;letter-spacing:.18em;color:var(--teal);margin-bottom:14px;opacity:.8">HSIL HACKATHON 2026 · APRIL</div>
-      <h1>منصة <span>ريفا</span> الصحي</h1>
-      <p class="hero-sub">رعاية صحية ذكية للمناطق الريفية — PWA بالعربي يعمل بدون إنترنت<br>شاتبوت طبي · 4 نماذج AI · Explainable AI · QR إحالة فورية</p>
-      <div class="pills">
-        <span class="pl t"><i class="fas fa-brain"></i> Explainable AI</span>
-        <span class="pl t"><i class="fas fa-wifi-slash"></i> Offline PWA</span>
-        <span class="pl g"><i class="fas fa-comments"></i> عربي عامي</span>
-        <span class="pl g"><i class="fas fa-qrcode"></i> QR إحالة</span>
-        <span class="pl a"><i class="fas fa-baby"></i> صحة الأم</span>
-        <span class="pl a"><i class="fas fa-school"></i> صحة مدرسية</span>
-        <span class="pl b"><i class="fas fa-robot"></i> 4 نماذج AI</span>
-        <span class="pl v"><i class="fas fa-trophy"></i> HSIL 2026</span>
-      </div>
-      <div class="kpi-row">
-        <div class="kpi"><div class="kpi-n">91%+</div><div class="kpi-l">دقة النماذج</div></div>
-        <div class="kpi"><div class="kpi-n">4</div><div class="kpi-l">نماذج AI متخصصة</div></div>
-        <div class="kpi"><div class="kpi-n">8</div><div class="kpi-l">صفحات في التطبيق</div></div>
-        <div class="kpi"><div class="kpi-n">PWA</div><div class="kpi-l">offline كامل</div></div>
-      </div>
+  <h1 class="hero-logo">ريفا</h1>
+  <p class="hero-subtitle-ar">رعاية افتراضية — Riva Health Platform</p>
+  <p class="hero-tagline">
+    منصة ذكاء اصطناعي تعمل بدون إنترنت، تمكّن المساعدين الصحيين في المناطق الريفية من فرز الحالات وتوجيهها بدقة — وتقليل الزيارات غير الضرورية للمستشفيات.
+  </p>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-number">91%</div>
+      <div class="stat-label">دقة النموذج</div>
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <div class="wrap">
-    <div class="section">
-      <div class="sec-lbl">الرؤية</div>
-      <h2 class="sec-h">لماذا ريفا؟</h2>
-      <p class="sec-p">مشكلة تمس ملايين المصريين — وحل تقني لم يُبنَ بعد بالعربي العامي مع Offline حقيقي</p>
-
-      <div class="quote-box">
-        <div class="quote-text">"كل إنسان — بغض النظر عن موقعه أو مستوى اتصاله — يستحق رعاية صحية ذكية في لحظة حاجته"</div>
-        <div class="quote-by">رسالة فريق ريفا · 2026</div>
-      </div>
-
-      <div class="v2">
-        <div class="card" style="--ct:#ff5252">
-          <div class="card-top"></div>
-          <div class="vc-icon">⚡</div>
-          <div class="vc-title">المشكلة</div>
-          <ul class="vi-list">
-            <li>60% من المصريين في الريف يعانون ضعف الرعاية</li>
-            <li>مريض يضيع يوم عمل + أجرة + انتظار لزيارة طبيب</li>
-            <li>تأخر تشخيص السكر والضغط يؤدي لمضاعفات خطيرة</li>
-            <li>إنترنت ضعيف أو منعدم في القرى النائية</li>
-          </ul>
-        </div>
-        <div class="card" style="--ct:#00e676">
-          <div class="card-top"></div>
-          <div class="vc-icon">💡</div>
-          <div class="vc-title">الحل</div>
-          <ul class="vi-list">
-            <li>شاتبوت بالعربي العامي يفهم أعراض المريض</li>
-            <li>4 نماذج AI متخصصة بدقة 91%+ مع تفسير القرار</li>
-            <li>PWA يشتغل بدون نت بعد أول زيارة</li>
-            <li>QR Code فوري للحالات الخطيرة</li>
-          </ul>
-        </div>
-        <div class="card" style="--ct:#448aff">
-          <div class="card-top"></div>
-          <div class="vc-icon">🎯</div>
-          <div class="vc-title">المهمة</div>
-          <ul class="vi-list">
-            <li>تقليل الزيارات غير الضرورية للمستشفيات بـ 30%</li>
-            <li>تشخيص مبكر للأمراض المزمنة في الريف</li>
-            <li>رعاية الأم الحامل في القرى النائية</li>
-            <li>متابعة الصحة المدرسية بشكل منتظم وذكي</li>
-          </ul>
-        </div>
-        <div class="card" style="--ct:#7c4dff">
-          <div class="card-top"></div>
-          <div class="vc-icon">🔭</div>
-          <div class="vc-title">الرؤية المستقبلية</div>
-          <ul class="vi-list">
-            <li>التوسع لـ 5 دول عربية بحلول 2028</li>
-            <li>شراكات مع وزارات الصحة في مصر والسودان</li>
-            <li>نموذج عمل مستدام عبر الاشتراكات المؤسسية</li>
-            <li>أول بنك بيانات صحي ريفي عربي</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="impact3">
-        <div class="imp"><div class="imp-n">3B+</div><div class="imp-l">شخص بلا رعاية كافية عالمياً</div></div>
-        <div class="imp"><div class="imp-n">60%</div><div class="imp-l">من المصريين في الريف</div></div>
-        <div class="imp"><div class="imp-n">75-85%</div><div class="imp-l">نسبة الفوز المتوقعة</div></div>
-      </div>
+    <div class="stat">
+      <div class="stat-number">30%</div>
+      <div class="stat-label">تقليل الضغط على المستشفيات</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">3B+</div>
+      <div class="stat-label">شخص في مناطق ريفية عالمياً</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">0G</div>
+      <div class="stat-label">يعمل بدون إنترنت</div>
     </div>
   </div>
 
-  <div class="foot">
-    <div class="foot-logo">ريفا الصحي</div>
-    <div class="foot-sub">HSIL Hackathon · April 2026 · رعاية افتراضية ذكية</div>
+  <div class="scroll-hint">تمرير للأسفل</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== PROBLEM ===== -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">المشكلة</div>
+      <h2 class="section-title">لماذا <span>ريفا</span>؟</h2>
+      <p class="section-desc">ملايين الأشخاص في المناطق الريفية يعانون من صعوبة الوصول للرعاية الصحية الأساسية — مما يؤدي لتأخر التشخيص ومضاعفات كان يمكن تفاديها.</p>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">🏥</div>
+        <div class="problem-title">بُعد المستشفيات</div>
+        <div class="problem-text">المرضى يقطعون مسافات طويلة للحصول على استشارات بسيطة كان يمكن حلها محلياً</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">⏰</div>
+        <div class="problem-title">تأخر التشخيص</div>
+        <div class="problem-text">تأخر اكتشاف الأمراض المزمنة كالسكري والضغط يؤدي لمضاعفات خطيرة وتكاليف أعلى</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">📶</div>
+        <div class="problem-title">ضعف الشبكة</div>
+        <div class="problem-text">معظم تطبيقات الصحة تتطلب إنترنت قوي — وهو غير متاح في المناطق الريفية</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🏛️</div>
+        <div class="problem-title">ضغط على المستشفيات</div>
+        <div class="problem-text">تكدس الحالات البسيطة في المستشفيات الرئيسية يرهق النظام الصحي بأكمله</div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════
-     PAGE: FEATURES
-══════════════════════ -->
-<div id="page-features" class="page">
-  <div class="wrap">
-    <div class="section">
-      <div class="sec-lbl">المميزات</div>
-      <h2 class="sec-h">كل ما يقدمه ريفا</h2>
-      <p class="sec-p">منظومة متكاملة من المميزات — كل واحدة حلّت مشكلة حقيقية</p>
+<div class="divider"></div>
 
-      <div class="feat-tabs">
-        <button class="feat-tab active" onclick="showFeat('core',this)">🏥 الأساسية</button>
-        <button class="feat-tab" onclick="showFeat('mom',this)">🤰 صحة الأم</button>
-        <button class="feat-tab" onclick="showFeat('school',this)">🏫 الصحة المدرسية</button>
-        <button class="feat-tab" onclick="showFeat('xai',this)">🔍 Explainable AI</button>
-        <button class="feat-tab" onclick="showFeat('offline',this)">📴 Offline</button>
-      </div>
+<!-- ===== SOLUTION ===== -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">الحل</div>
+      <h2 class="section-title">كيف تعمل <span>ريفا</span>؟</h2>
+      <p class="section-desc">منصة متكاملة من مرحلتين — تشخيص أولي ذكي، ثم إحالة دقيقة للتخصص الصحيح</p>
+    </div>
 
-      <!-- CORE -->
-      <div id="feat-core" class="feat-panel active">
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#00bfa5"></div>
-          <div class="fc-icon">💬</div>
-          <h4>شاتبوت طبي بالعربي العامي</h4>
-          <p>المريض يكتب أعراضه بالعامية المصرية — النموذج يفهم ويسأل أسئلة طبية ذكية للوصول للتشخيص الصحيح</p>
-          <span class="fc-badge">DistilBERT/ArabERT + Claude API</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#ff5252"></div>
-          <div class="fc-icon">🚨</div>
-          <h4>فرز طبي ذكي ثلاثي المستويات</h4>
-          <p>XGBoost يصنف الحالة فوراً — عادية أو تحتاج متابعة أو طارئة — مع تفسير كامل للقرار بالعربي</p>
-          <span class="fc-badge" style="color:#ff8a80;border-color:rgba(255,82,82,.3);background:rgba(255,82,82,.1)">XGBoost + SHAP</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#ffd740"></div>
-          <div class="fc-icon">🔖</div>
-          <h4>QR Code إحالة فوري</h4>
-          <p>الحالات الخطيرة تأخذ كود فوري — الطبيب في المستشفى يمسحه ويشوف كل التفاصيل بدون إعادة شرح</p>
-          <span class="fc-badge" style="color:#ffd740;border-color:rgba(255,171,0,.3);background:rgba(255,171,0,.1)">QR Generator</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#448aff"></div>
-          <div class="fc-icon">📊</div>
-          <h4>داشبورد المستشفى</h4>
-          <p>المستشفى يتابع كل الحالات الواردة، إحصائيات realtime، فلترة حسب الخطورة والتاريخ</p>
-          <span class="fc-badge" style="color:#82b1ff;border-color:rgba(68,138,255,.3);background:rgba(68,138,255,.1)">Streamlit Dashboard</span>
-        </div>
-      </div>
-
-      <!-- MOM -->
-      <div id="feat-mom" class="feat-panel">
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#ff4081"></div>
-          <div class="fc-icon">🤰</div>
-          <h4>تقييم مخاطر الحمل</h4>
-          <p>Random Forest مدرب على UCI Maternal Health Dataset يحسب مخاطر الحمل ويحدد الحالات اللي محتاجة متابعة فورية</p>
-          <span class="fc-badge" style="color:#ff80ab;border-color:rgba(255,64,129,.3);background:rgba(255,64,129,.1)">Random Forest · 06_pregnancy.py</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#f06292"></div>
-          <div class="fc-icon">📋</div>
-          <h4>إرشادات الحمل بالعربي</h4>
-          <p>محتوى طبي مراجع من الطبيب — تغذية، تمارين، علامات خطر، موعد الزيارات — كل ده متاح offline</p>
-          <span class="fc-badge" style="color:#ff80ab;border-color:rgba(255,64,129,.3);background:rgba(255,64,129,.1)">pregnancy_guidelines.md</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#ec407a"></div>
-          <div class="fc-icon">⚠️</div>
-          <h4>كشف علامات الخطر</h4>
-          <p>النموذج يرصد علامات الخطر الشائعة في الحمل — نزيف، تورم، ضغط عالي — ويتصرف فوراً</p>
-          <span class="fc-badge" style="color:#ff80ab;border-color:rgba(255,64,129,.3);background:rgba(255,64,129,.1)">pregnancy_risk.py</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#d81b60"></div>
-          <div class="fc-icon">📅</div>
-          <h4>جدول متابعة الحمل</h4>
-          <p>تذكير بمواعيد الكشف والتحاليل المهمة طول فترة الحمل — مع تسجيل محلي offline كامل</p>
-          <span class="fc-badge" style="color:#ff80ab;border-color:rgba(255,64,129,.3);background:rgba(255,64,129,.1)">offline_storage.py + IndexedDB</span>
-        </div>
-      </div>
-
-      <!-- SCHOOL -->
-      <div id="feat-school" class="feat-panel">
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#00e676"></div>
-          <div class="fc-icon">🏫</div>
-          <h4>تجميع ذكي للطلاب</h4>
-          <p>K-Means مدرب على بيانات WHO Growth يصنف الطلاب لمجموعات صحية — يحدد مين محتاج متابعة ومين بخير</p>
-          <span class="fc-badge" style="color:#69f0ae;border-color:rgba(0,230,118,.3);background:rgba(0,230,118,.1)">K-Means · 04_school.ipynb</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#69f0ae"></div>
-          <div class="fc-icon">📏</div>
-          <h4>قياسات نمو الطفل</h4>
-          <p>مقارنة قياسات الطفل (طول، وزن، BMI) بمعايير WHO — كشف مبكر لسوء التغذية أو البدانة</p>
-          <span class="fc-badge" style="color:#69f0ae;border-color:rgba(0,230,118,.3);background:rgba(0,230,118,.1)">WHO Growth Standards</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#00c853"></div>
-          <div class="fc-icon">📊</div>
-          <h4>تقارير للمدرسة والأهل</h4>
-          <p>تقرير واضح يتبعت للأهل والمدرسة — ملاحظات صحية وتوصيات بسيطة بدون مصطلحات طبية معقدة</p>
-          <span class="fc-badge" style="color:#69f0ae;border-color:rgba(0,230,118,.3);background:rgba(0,230,118,.1)">07_school.py</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#1b5e20"></div>
-          <div class="fc-icon">🏃</div>
-          <h4>معايير الصحة المدرسية</h4>
-          <p>محتوى طبي شامل عن التغذية السليمة، النشاط البدني، الصحة النفسية للطلاب — مراجع طبياً</p>
-          <span class="fc-badge" style="color:#69f0ae;border-color:rgba(0,230,118,.3);background:rgba(0,230,118,.1)">school_health_criteria.md</span>
-        </div>
-      </div>
-
-      <!-- XAI -->
-      <div id="feat-xai" class="feat-panel">
-        <div class="fc" style="position:relative;grid-column:1/-1">
-          <div class="fc-top" style="--fct:#7c4dff"></div>
-          <div class="fc-icon">🔍</div>
-          <h4>Explainable AI — النموذج يشرح قراره</h4>
-          <p style="margin-bottom:20px">بدل ما النموذج يقول "خطورة 73%" بس — ريفا بيقول <strong style="color:#fff">"ليه"</strong> بالعربي البسيط. ده اللي بيميز ريفا عن كل الحلول الموجودة</p>
-          <div style="background:var(--bg3);border-radius:14px;padding:20px">
-            <div style="font-size:.72rem;color:var(--muted);margin-bottom:14px">مثال — نتيجة الفرز الطبي بالشرح:</div>
-            <div style="font-size:.8rem;font-weight:700;color:#fff;margin-bottom:12px">🚨 الخطورة: 73% — ننصح بالتوجه للمستشفى فوراً</div>
-            <div style="font-size:.72rem;color:var(--muted);margin-bottom:10px">أهم العوامل اللي أثرت في القرار:</div>
-            <div id="explain-demo">
-              <div class="explain-item"><span class="explain-factor">السكر في الدم</span><div class="explain-bar-wrap"><div class="explain-bar" style="width:85%;background:#ff5252"></div></div><span class="explain-val" style="color:#ff8a80">+0.42</span></div>
-              <div class="explain-item"><span class="explain-factor">ضغط الدم</span><div class="explain-bar-wrap"><div class="explain-bar" style="width:60%;background:#ffab00"></div></div><span class="explain-val" style="color:#ffd740">+0.28</span></div>
-              <div class="explain-item"><span class="explain-factor">العمر</span><div class="explain-bar-wrap"><div class="explain-bar" style="width:40%;background:#448aff"></div></div><span class="explain-val" style="color:#82b1ff">+0.18</span></div>
-              <div class="explain-item"><span class="explain-factor">BMI</span><div class="explain-bar-wrap"><div class="explain-bar" style="width:30%;background:#00bfa5"></div></div><span class="explain-val" style="color:var(--teal-l)">+0.12</span></div>
-            </div>
+    <div class="solution-phases">
+      <div class="phase reveal">
+        <div class="phase-num">١</div>
+        <div>
+          <div class="phase-title">🧠 الفرز الذكي (Triage AI)</div>
+          <div class="phase-desc">المساعد الصحي يُدخل أعراض المريض بالعامية — النموذج يحللها ويصنف الحالة فوراً: طارئة، تحتاج استشارة، أو رعاية منزلية. يعمل بالكامل بدون إنترنت.</div>
+          <div class="phase-tags">
+            <span class="tag">XGBoost Model</span>
+            <span class="tag">Offline-First</span>
+            <span class="tag">ONNX Export</span>
+            <span class="tag">AES-256 Encryption</span>
           </div>
         </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#7c4dff"></div>
-          <div class="fc-icon">📝</div>
-          <h4>explanation_service.py</h4>
-          <p>خدمة متخصصة تحول نتائج SHAP لجملة عربية مفهومة — يشوفها المريض والطبيب على حد سواء</p>
-          <span class="fc-badge" style="color:#b388ff;border-color:rgba(124,77,255,.3);background:rgba(124,77,255,.1)">SHAP + Arabic NLP</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#651fff"></div>
-          <div class="fc-icon">📖</div>
-          <h4>explanation_rules.json</h4>
-          <p>قواعد مراجعة طبياً من الطبيب — تضمن إن الشرح دقيق طبياً ومفهوم للمريض العادي في نفس الوقت</p>
-          <span class="fc-badge" style="color:#b388ff;border-color:rgba(124,77,255,.3);background:rgba(124,77,255,.1)">Mohamed + الطبيب</span>
+      </div>
+
+      <div class="phase reveal">
+        <div class="phase-num">٢</div>
+        <div>
+          <div class="phase-title">📋 الإحالة والمتابعة</div>
+          <div class="phase-desc">الحالات التي تحتاج طبيباً تحصل على QR Code مرجعي يسرّع استقبالها في المستشفى. يتزامن السجل الطبي تلقائياً عند عودة الاتصال.</div>
+          <div class="phase-tags">
+            <span class="tag">QR Code Generator</span>
+            <span class="tag">Background Sync</span>
+            <span class="tag">SQLite Local DB</span>
+          </div>
         </div>
       </div>
 
-      <!-- OFFLINE -->
-      <div id="feat-offline" class="feat-panel">
-        <div class="fc" style="position:relative;grid-column:1/-1">
-          <div class="fc-top" style="--fct:#00bfa5"></div>
-          <div class="fc-icon">📴</div>
-          <h4>يشتغل بدون إنترنت — الميزة الأهم</h4>
-          <p style="margin-bottom:20px">المريض يفتح الموقع مرة واحدة بنت — Service Worker بيحفظ كل حاجة — من بعدها يشتغل للأبد بدون نت</p>
-          <div class="flow2">
-            <div class="flow2-card">
-              <h4 style="color:var(--teal-l)">🌐 متصل</h4>
-              <p>Claude API ذكي + ONNX models كاملة + مزامنة للسيرفر</p>
-            </div>
-            <div class="flow2-arr">⇄</div>
-            <div class="flow2-card">
-              <h4 style="color:var(--muted)">📴 بدون نت</h4>
-              <p>triage_rules.yaml + ONNX int8 محلي + offline_storage</p>
-            </div>
+      <div class="phase reveal">
+        <div class="phase-num">٣</div>
+        <div>
+          <div class="phase-title">📊 داشبورد المتابعة</div>
+          <div class="phase-desc">لوحة تحكم للمستشفيات تعرض الحالات الواردة وتحليلات صحية للمجتمع — ومتابعة الأمراض المزمنة وصحة الأمهات والمدارس.</div>
+          <div class="phase-tags">
+            <span class="tag">Streamlit Dashboard</span>
+            <span class="tag">Plotly Charts</span>
+            <span class="tag">PWA Support</span>
           </div>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#00bfa5"></div>
-          <div class="fc-icon">⚡</div>
-          <h4>ONNX + Quantization</h4>
-          <p>النماذج محولة لـ ONNX وبعدين int8 Quantization — حجمها بينقص 75% وتشتغل على أي جهاز ضعيف</p>
-          <span class="fc-badge">05_onnx_export.ipynb</span>
-        </div>
-        <div class="fc" style="position:relative">
-          <div class="fc-top" style="--fct:#1de9b6"></div>
-          <div class="fc-icon">💾</div>
-          <h4>تخزين محلي آمن</h4>
-          <p>بيانات المرضى في IndexedDB + SQLite محلياً — لا تخرج من الجهاز أبداً — privacy كاملة</p>
-          <span class="fc-badge">offline_storage.py + patients.db</span>
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="foot">
-    <div class="foot-logo">ريفا الصحي</div>
-    <div class="foot-sub">HSIL Hackathon · April 2026</div>
+<div class="divider"></div>
+
+<!-- ===== TEAM ===== -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">الفريق</div>
+      <h2 class="section-title">من يبني <span>ريفا</span>؟</h2>
+      <p class="section-desc">فريق متكامل المهارات — طب وذكاء اصطناعي وتطوير وبيزنس</p>
+    </div>
+
+    <div class="team-grid">
+
+      <div class="member-card reveal">
+        <div class="member-avatar">
+          GE
+          <span class="status"></span>
+        </div>
+        <div class="member-name">Goda Emad</div>
+        <div class="member-role">🧠 AI/ML Engineer</div>
+        <ul class="member-tasks">
+          <li>بناء نماذج XGBoost & Random Forest</li>
+          <li>تصدير النماذج بصيغة ONNX</li>
+          <li>تشفير البيانات AES-256</li>
+          <li>تدريب الـ Notebooks</li>
+          <li>تحليل البيانات واستخراج الأنماط</li>
+        </ul>
+      </div>
+
+      <div class="member-card reveal">
+        <div class="member-avatar">
+          NK
+          <span class="status"></span>
+        </div>
+        <div class="member-name">Nada Khaled</div>
+        <div class="member-role">🌐 Frontend Developer</div>
+        <ul class="member-tasks">
+          <li>بناء واجهة Streamlit</li>
+          <li>تطوير PWA & Service Worker</li>
+          <li>تصميم UI/UX للتطبيق</li>
+          <li>دعم RTL والعربية</li>
+          <li>نشر التطبيق على Vercel</li>
+        </ul>
+      </div>
+
+      <div class="member-card reveal">
+        <div class="member-avatar">
+          MG
+          <span class="status"></span>
+        </div>
+        <div class="member-name">Mohamed Gharieb</div>
+        <div class="member-role">💼 Business & Research</div>
+        <ul class="member-tasks">
+          <li>صياغة نموذج العمل</li>
+          <li>تحضير العرض التقديمي</li>
+          <li>تحليل التأثير الاقتصادي</li>
+          <li>أبحاث ميدانية وسياسات</li>
+          <li>التواصل مع الشركاء</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════
-     PAGE: AI MODELS
-══════════════════════ -->
-<div id="page-ai" class="page">
-  <div class="wrap">
-    <div class="section">
-      <div class="sec-lbl">نماذج الذكاء الاصطناعي</div>
-      <h2 class="sec-h">4 نماذج AI متخصصة</h2>
-      <p class="sec-p">كل نموذج مصمم لمشكلة محددة — مدرب على بيانات حقيقية — يشتغل offline بعد Quantization</p>
+<div class="divider"></div>
 
-      <div class="models-grid">
+<!-- ===== TIMELINE ===== -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">خطة التنفيذ</div>
+      <h2 class="section-title">خارطة الطريق — <span>شهر واحد</span></h2>
+      <p class="section-desc">خطة يومية منظمة لتسليم مشروع احترافي جاهز للمسابقة</p>
+    </div>
 
-        <!-- TRIAGE -->
-        <div class="model-card">
-          <div class="mc-line" style="background:linear-gradient(90deg,#ff5252,#ff867f)"></div>
-          <div class="mc-icon">🚨</div>
-          <div class="mc-name">نموذج الفرز الطبي</div>
-          <div class="mc-algo" style="color:#ff8a80">XGBoost · ONNX + int8</div>
-          <div class="mc-desc">يصنف الحالات الطبية الواردة إلى ثلاثة مستويات خطورة — مدرب على PIMA Indians + MIMIC-III</div>
-          <div class="mc-acc">
-            <div class="acc-bar-wrap"><div class="acc-bar" style="width:91%;--mc:#ff5252" data-width="91"></div></div>
-            <div class="acc-n" style="color:#ff8a80">91%</div>
-          </div>
-          <div class="mc-files">
-            <span class="mc-file">xgb_model_int8.onnx</span>
-            <span class="mc-file">triage_classifier.py</span>
-            <span class="mc-file">01_triage_model.ipynb</span>
-          </div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-content">
+          <div class="timeline-week">الأسبوع الأول</div>
+          <div class="timeline-title">🛠️ التجهيز والتعلم</div>
+          <div class="timeline-tasks">تجهيز بيئة الشغل · تعلم XGBoost · تنزيل PIMA Dataset · توزيع المهام على الفريق</div>
         </div>
-
-        <!-- PREGNANCY -->
-        <div class="model-card">
-          <div class="mc-line" style="background:linear-gradient(90deg,#ff4081,#f06292)"></div>
-          <div class="mc-icon">🤰</div>
-          <div class="mc-name">نموذج صحة الأم</div>
-          <div class="mc-algo" style="color:#ff80ab">Random Forest · ONNX + int8</div>
-          <div class="mc-desc">يحسب مخاطر الحمل ويرصد علامات الخطر — مدرب على UCI Maternal Health Dataset بإشراف طبي</div>
-          <div class="mc-acc">
-            <div class="acc-bar-wrap"><div class="acc-bar" style="width:88%;--mc:#ff4081" data-width="88"></div></div>
-            <div class="acc-n" style="color:#ff80ab">88%</div>
-          </div>
-          <div class="mc-files">
-            <span class="mc-file">rf_model_int8.onnx</span>
-            <span class="mc-file">pregnancy_risk.py</span>
-            <span class="mc-file">02_pregnancy_model.ipynb</span>
-          </div>
-        </div>
-
-        <!-- CHATBOT -->
-        <div class="model-card">
-          <div class="mc-line" style="background:linear-gradient(90deg,#448aff,#7c4dff)"></div>
-          <div class="mc-icon">💬</div>
-          <div class="mc-name">نموذج الشاتبوت</div>
-          <div class="mc-algo" style="color:#82b1ff">DistilBERT/ArabERT · ONNX + int8</div>
-          <div class="mc-desc">يفهم العربي العامي المصري ويستخرج نية المريض — مدرب على بيانات عامية مصرية مخصصة</div>
-          <div class="mc-acc">
-            <div class="acc-bar-wrap"><div class="acc-bar" style="width:85%;--mc:#448aff" data-width="85"></div></div>
-            <div class="acc-n" style="color:#82b1ff">85%</div>
-          </div>
-          <div class="mc-files">
-            <span class="mc-file">arabic_bert_int8.onnx</span>
-            <span class="mc-file">medical_chatbot.py</span>
-            <span class="mc-file">03_chatbot_model.ipynb</span>
-          </div>
-        </div>
-
-        <!-- SCHOOL -->
-        <div class="model-card">
-          <div class="mc-line" style="background:linear-gradient(90deg,#00e676,#00bfa5)"></div>
-          <div class="mc-icon">🏫</div>
-          <div class="mc-name">نموذج الصحة المدرسية</div>
-          <div class="mc-algo" style="color:#69f0ae">K-Means · ONNX + int8</div>
-          <div class="mc-desc">يصنف الطلاب لمجموعات صحية بناءً على قياسات النمو — مقارنة بمعايير WHO للأطفال</div>
-          <div class="mc-acc">
-            <div class="acc-bar-wrap"><div class="acc-bar" style="width:93%;--mc:#00e676" data-width="93"></div></div>
-            <div class="acc-n" style="color:#69f0ae">93%</div>
-          </div>
-          <div class="mc-files">
-            <span class="mc-file">kmeans_model_int8.onnx</span>
-            <span class="mc-file">school_clustering.py</span>
-            <span class="mc-file">04_school_model.ipynb</span>
-          </div>
-        </div>
-
+        <div class="timeline-dot">١</div>
       </div>
 
-      <!-- EXPLAINABILITY -->
-      <div style="background:linear-gradient(135deg,rgba(124,77,255,.08),rgba(68,138,255,.05));border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:28px">
-        <h3 style="font-size:1rem;font-weight:800;color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:8px">
-          <span>🔍</span> Explainable AI — كل النماذج عندها تفسير
-        </h3>
-        <p style="font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:16px">
-          مش بس نسبة — ريفا بيقول ليه. SHAP values بتتحول لجمل عربية بسيطة يفهمها المريض والطبيب
-        </p>
-        <div style="background:var(--bg3);border-radius:12px;padding:16px">
-          <div style="font-size:.7rem;color:var(--muted);margin-bottom:10px">مثال — شرح قرار نموذج الفرز:</div>
-          <div class="explain-item"><span class="explain-factor">السكر في الدم</span><div class="explain-bar-wrap"><div class="explain-bar" style="width:85%;background:#ff5252"></div></div><span class="explain-val" style="color:#ff8a80">عالي جداً</span></div>
-          <div class="explain-item"><span class="explain-factor">ضغط الدم</span><div class="explain-bar-wrap"><div class="explain-bar" style="width:60%;background:#ffab00"></div></div><span class="explain-val" style="color:#ffd740">مرتفع</span></div>
-          <div class="explain-item"><span class="explain-factor">BMI</span><div class="explain-bar-wrap"><div class="explain-bar" style="width:40%;background:#448aff"></div></div><span class="explain-val" style="color:#82b1ff">طبيعي</span></div>
+      <div class="timeline-item reveal">
+        <div class="timeline-content">
+          <div class="timeline-week">الأسبوع الثاني</div>
+          <div class="timeline-title">🧠 بناء النموذج</div>
+          <div class="timeline-tasks">تنظيف البيانات · Feature Engineering · تدريب Triage Model · تقييم الدقة وتحسينها · تصدير ONNX</div>
         </div>
-        <div style="margin-top:14px;font-size:.72rem;color:var(--muted)">
-          الملفات المسؤولة:
-          <span style="font-family:monospace;color:var(--teal);background:rgba(0,191,165,.08);padding:2px 8px;border-radius:6px;margin:0 4px">explainability.py</span>
-          <span style="font-family:monospace;color:var(--teal);background:rgba(0,191,165,.08);padding:2px 8px;border-radius:6px;margin:0 4px">explanation_service.py</span>
-          <span style="font-family:monospace;color:var(--teal);background:rgba(0,191,165,.08);padding:2px 8px;border-radius:6px;margin:0 4px">06_explainability.ipynb</span>
-        </div>
+        <div class="timeline-dot">٢</div>
       </div>
 
-      <!-- RISK LEVELS -->
-      <div style="margin-top:32px">
-        <div class="sec-lbl" style="margin-bottom:16px">مستويات الخطورة</div>
-        <div class="risk3">
-          <div class="rc g"><div class="rc-ico">✅</div><div class="rc-lv">عادية</div><div class="rc-pct" style="color:#69f0ae">0–30%</div><div class="rc-act">علاج منزلي + نصائح</div></div>
-          <div class="rc a"><div class="rc-ico">⚠️</div><div class="rc-lv">متابعة</div><div class="rc-pct" style="color:#ffd740">30–65%</div><div class="rc-act">مركز صحي خلال 24h</div></div>
-          <div class="rc r"><div class="rc-ico">🚨</div><div class="rc-lv">طارئة</div><div class="rc-pct" style="color:#ff8a80">65–100%</div><div class="rc-act">مستشفى فوراً + QR</div></div>
+      <div class="timeline-item reveal">
+        <div class="timeline-content">
+          <div class="timeline-week">الأسبوع الثالث</div>
+          <div class="timeline-title">🌐 بناء التطبيق</div>
+          <div class="timeline-tasks">واجهة Streamlit · QR Code Generator · Offline Storage · ربط النموذج بالواجهة · اختبار شامل</div>
         </div>
+        <div class="timeline-dot">٣</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-content">
+          <div class="timeline-week">الأسبوع الرابع</div>
+          <div class="timeline-title">🏆 التجهيز للفوز</div>
+          <div class="timeline-tasks">Pitch Deck احترافي · إجابات أسئلة اللجنة · تدريب على العرض · Demo كامل · تجهيز نهائي</div>
+        </div>
+        <div class="timeline-dot">٤</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== TECH STACK ===== -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">التقنيات</div>
+      <h2 class="section-title">الـ <span>Tech Stack</span></h2>
+    </div>
+
+    <div class="tech-grid">
+      <div class="tech-item reveal">
+        <div class="tech-icon">🐍</div>
+        <div class="tech-name">Python</div>
+        <div class="tech-use">اللغة الأساسية</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">⚡</div>
+        <div class="tech-name">XGBoost</div>
+        <div class="tech-use">نموذج الفرز</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🔄</div>
+        <div class="tech-name">ONNX</div>
+        <div class="tech-use">نشر النموذج Offline</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🎯</div>
+        <div class="tech-name">Streamlit</div>
+        <div class="tech-use">واجهة التطبيق</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🔐</div>
+        <div class="tech-name">AES-256</div>
+        <div class="tech-use">تشفير البيانات</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">📱</div>
+        <div class="tech-name">PWA</div>
+        <div class="tech-use">تطبيق بدون نت</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🗄️</div>
+        <div class="tech-name">SQLite</div>
+        <div class="tech-use">قاعدة بيانات محلية</div>
+      </div>
+      <div class="tech-item reveal">
+        <div class="tech-icon">🚀</div>
+        <div class="tech-name">Vercel</div>
+        <div class="tech-use">نشر التطبيق</div>
       </div>
     </div>
   </div>
-  <div class="foot"><div class="foot-logo">ريفا الصحي</div><div class="foot-sub">HSIL Hackathon · April 2026</div></div>
-</div>
+</section>
 
-<!-- ══════════════════════
-     PAGE: TEAM
-══════════════════════ -->
-<div id="page-team" class="page">
-  <div class="wrap">
-    <div class="section">
-      <div class="sec-lbl">الفريق</div>
-      <h2 class="sec-h">من بنى ريفا؟</h2>
-      <p class="sec-p">4 متخصصين — كل واحد يملك قطعة اللغز الكاملة</p>
+<div class="divider"></div>
 
-      <div class="team-grid">
-
-        <!-- GODA -->
-        <div class="tc tc-goda">
-          <div class="tc-head">
-            <div class="tc-star">⭐ Technical Lead</div>
-            <div class="tc-av">🧠</div>
-            <div class="tc-name">Goda Emad</div>
-            <div class="tc-role">AI / ML Engineer</div>
-          </div>
-          <div class="tc-body">
-            <div class="tc-desc">مهندسة ذكاء اصطناعي متخصصة في بناء النماذج الطبية وتحسينها للعمل في البيئات المحدودة</div>
-            <ul class="tc-tasks">
-              <li><span class="tt tt-ai">AI</span>تدريب 4 نماذج: XGBoost · Random Forest · DistilBERT · K-Means</li>
-              <li><span class="tt tt-ai">ONNX</span>تحويل النماذج لـ ONNX + int8 Quantization للـ offline</li>
-              <li><span class="tt tt-ai">XAI</span>بناء Explainable AI + SHAP values بالعربي</li>
-              <li><span class="tt tt-ai">Code</span>ai_service · model_router · explanation_service</li>
-              <li><span class="tt tt-sh">Data</span>PIMA · UCI Maternal · WHO Growth · arabic_dialects</li>
-              <li><span class="tt tt-sh">📓</span>7 Jupyter Notebooks من EDA لـ Performance Testing</li>
-            </ul>
-            <div class="tc-skills">
-              <span class="sk">Python</span><span class="sk">XGBoost</span><span class="sk">scikit-learn</span>
-              <span class="sk">SHAP</span><span class="sk">ONNX</span><span class="sk">Claude API</span><span class="sk">Streamlit</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- NADA -->
-        <div class="tc tc-nada">
-          <div class="tc-head">
-            <div class="tc-star">🎨 UI/UX Lead</div>
-            <div class="tc-av">✨</div>
-            <div class="tc-name">Nada Khaled</div>
-            <div class="tc-role">Frontend + UI/UX</div>
-          </div>
-          <div class="tc-body">
-            <div class="tc-desc">Full Stack Developer وUI/UX Designer — مسؤولة عن كل ما يراه ويلمسه المستخدم</div>
-            <ul class="tc-tasks">
-              <li><span class="tt tt-fe">Figma</span>تصميم Wireframes لكل الصفحات الـ 8 بدعم RTL</li>
-              <li><span class="tt tt-fe">PWA</span>manifest.json · service-worker.js · Workbox</li>
-              <li><span class="tt tt-fe">Dev</span>بناء 8 صفحات Streamlit كاملة بالعربي</li>
-              <li><span class="tt tt-fe">Dev</span>كل المكونات: chat · risk_badge · qr_generator · explanation_box</li>
-              <li><span class="tt tt-fe">PWA</span>vite.config.js · workbox-config.js · offline detection</li>
-              <li><span class="tt tt-sh">Deploy</span>Vercel + GitHub Pages + CI/CD</li>
-            </ul>
-            <div class="tc-skills">
-              <span class="sk">React</span><span class="sk">Streamlit</span><span class="sk">Figma</span>
-              <span class="sk">PWA</span><span class="sk">CSS RTL</span><span class="sk">Vite</span><span class="sk">Full Stack</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- MOHAMED -->
-        <div class="tc tc-mo">
-          <div class="tc-head">
-            <div class="tc-star">💼 Business Lead</div>
-            <div class="tc-av">📊</div>
-            <div class="tc-name">Mohamed Gharieb</div>
-            <div class="tc-role">Business & Strategy</div>
-          </div>
-          <div class="tc-body">
-            <div class="tc-desc">مسؤول عن نموذج العمل والعرض التقديمي والمحتوى الطبي للصحة المدرسية</div>
-            <ul class="tc-tasks">
-              <li><span class="tt tt-bz">Pitch</span>Pitch Deck + demo_script.md + judges_qa.md</li>
-              <li><span class="tt tt-bz">Business</span>نموذج عمل + تحليل سوق + توقعات مالية</li>
-              <li><span class="tt tt-bz">Content</span>specialties.yaml · diseases.yaml · symptom_mapping.json</li>
-              <li><span class="tt tt-bz">Content</span>school_health_criteria.md · explanation_rules.json</li>
-              <li><span class="tt tt-bz">Plan</span>تجهيز .hackathon/ — خطة اليومين + الطوارئ</li>
-              <li><span class="tt tt-sh">Legal</span>LICENSE · ROADMAP.md · CHANGELOG.md</li>
-            </ul>
-            <div class="tc-skills">
-              <span class="sk">Business Strategy</span><span class="sk">Market Analysis</span>
-              <span class="sk">PowerPoint</span><span class="sk">تخطيط استراتيجي</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- DOCTOR -->
-        <div class="tc tc-dr">
-          <div class="tc-head">
-            <div class="tc-star">🩺 Medical Lead</div>
-            <div class="tc-av">🩺</div>
-            <div class="tc-name">الطبيب</div>
-            <div class="tc-role">Medical Expert</div>
-          </div>
-          <div class="tc-body">
-            <div class="tc-desc">المرساة الطبية — يضمن أن كل قرار يتخذه AI مبني على أساس علمي سليم ومعتمد</div>
-            <ul class="tc-tasks">
-              <li><span class="tt tt-md">Medical</span>كتابة system_prompt.txt + prompts.py الطبية</li>
-              <li><span class="tt tt-md">Review</span>مراجعة دقة النماذج طبياً + triage_rules.yaml</li>
-              <li><span class="tt tt-md">XAI</span>explanation_rules.json — قواعد تفسير القرارات طبياً</li>
-              <li><span class="tt tt-md">Medical</span>pregnancy_guidelines.md + school_health_criteria.md</li>
-              <li><span class="tt tt-md">Review</span>التحقق من كل مستوى خطورة قبل الإطلاق</li>
-              <li><span class="tt tt-sh">Data</span>المساهمة في تجهيز triage_samples.json + pregnancy_samples.json</li>
-            </ul>
-            <div class="tc-skills">
-              <span class="sk">طب عام</span><span class="sk">تشخيص سريري</span>
-              <span class="sk">صحة عامة</span><span class="sk">صحة الأم</span><span class="sk">صحة مدرسية</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">ريفا</div>
+    <div class="footer-text">صحة أفضل في متناول يدك — لدعم المجتمعات الأكثر احتياجاً</div>
+    <div class="footer-badge">HSIL Hack-a-thon · أبريل 2026 · Harvard Health Systems Innovation Lab</div>
   </div>
-  <div class="foot"><div class="foot-logo">ريفا الصحي</div><div class="foot-sub">HSIL Hackathon · April 2026</div></div>
-</div>
-
-<!-- ══════════════════════
-     PAGE: ROADMAP
-══════════════════════ -->
-<div id="page-roadmap" class="page">
-  <div class="wrap">
-    <div class="section">
-      <div class="sec-lbl">خطة التنفيذ</div>
-      <h2 class="sec-h">5 أسابيع للنور</h2>
-      <p class="sec-p">كل أسبوع له milestone واضح — ومخرج ملموس يقدر الفريق يحتفل بيه</p>
-
-      <div class="rm">
-        <div class="rm-row">
-          <div class="rm-l"><div class="rm-wk">Week 1</div><div class="rm-dot"></div><div class="rm-line"></div></div>
-          <div class="rm-r">
-            <div class="rm-title">التأسيس — GitHub + الطبيب + Figma</div>
-            <div class="rm-items">
-              <span class="rmi you">Goda: EDA + system_prompt + offline_rules</span>
-              <span class="rmi">Nada: Figma Wireframes 8 صفحات</span>
-              <span class="rmi">Mohamed: Business Canvas + specialties.yaml</span>
-              <span class="rmi">الطبيب: قائمة أعراض + explanation_rules.json</span>
-            </div>
-          </div>
-        </div>
-        <div class="rm-row">
-          <div class="rm-l"><div class="rm-wk">Week 2</div><div class="rm-dot"></div><div class="rm-line"></div></div>
-          <div class="rm-r">
-            <div class="rm-title">البناء المنفصل — كل جزء لوحده</div>
-            <div class="rm-items">
-              <span class="rmi you">Goda: تدريب 4 نماذج + ONNX + Quantization</span>
-              <span class="rmi you">Goda: explainability.py + SHAP integration</span>
-              <span class="rmi">Nada: PWA Setup + service-worker + 3 صفحات</span>
-              <span class="rmi">Mohamed: Pitch Deck مسودة + demo_script.md</span>
-            </div>
-          </div>
-        </div>
-        <div class="rm-row">
-          <div class="rm-l"><div class="rm-wk">Week 3</div><div class="rm-dot"></div><div class="rm-line"></div></div>
-          <div class="rm-r">
-            <div class="rm-title">التكامل — ربط كل حاجة ببعض</div>
-            <div class="rm-items">
-              <span class="rmi you">Goda: model_router + explanation_service + patient_db</span>
-              <span class="rmi">Nada: ربط الـ UI بالـ API + explanation_box component</span>
-              <span class="rmi">الكل: QR Code + داشبورد المستشفى + sync_service</span>
-            </div>
-          </div>
-        </div>
-        <div class="rm-row">
-          <div class="rm-l"><div class="rm-wk">Week 4</div><div class="rm-dot"></div><div class="rm-line"></div></div>
-          <div class="rm-r">
-            <div class="rm-title">الاختبار — Offline حقيقي + مراجعة طبية</div>
-            <div class="rm-items">
-              <span class="rmi you">Goda: 07_performance_test + اختبار ONNX offline</span>
-              <span class="rmi">الطبيب: مراجعة دقة الشاتبوت + explanation_rules</span>
-              <span class="rmi">Nada: offline_demo.mp4 + تحسين الـ UI</span>
-              <span class="rmi">الكل: اختبار الـ 4 نماذج على بيانات حقيقية</span>
-            </div>
-          </div>
-        </div>
-        <div class="rm-row">
-          <div class="rm-l"><div class="rm-wk">Week 5</div><div class="rm-dot" style="background:var(--amber);box-shadow:0 0 10px rgba(255,171,0,.5)"></div><div class="rm-line" style="opacity:0"></div></div>
-          <div class="rm-r" style="border-color:rgba(255,171,0,.2);background:rgba(255,171,0,.04)">
-            <div class="rm-title" style="color:var(--amber)">🏆 الهاكاثون — الفوز</div>
-            <div class="rm-items">
-              <span class="rmi fin">Demo حي شغال بالكامل</span>
-              <span class="rmi fin">Pitch Deck 8 سلايدات</span>
-              <span class="rmi fin">judges_qa.md جاهز</span>
-              <span class="rmi fin">offline_demo.mp4</span>
-              <span class="rmi fin">technical_validation.pdf</span>
-              <span class="rmi fin">تدريب العرض 3 مرات</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- نسبة الفوز -->
-      <div style="margin-top:48px;background:linear-gradient(135deg,rgba(0,191,165,.08),rgba(0,230,118,.04));border:1px solid var(--border2);border-radius:18px;padding:28px;text-align:center">
-        <div style="font-size:.65rem;font-weight:800;letter-spacing:.15em;color:var(--teal);margin-bottom:12px">التوقع النهائي</div>
-        <div style="font-family:'Tajawal',sans-serif;font-size:3rem;font-weight:900;background:linear-gradient(135deg,var(--teal-l),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent">75–85%</div>
-        <div style="font-size:.82rem;color:var(--muted);margin-top:8px;line-height:1.7">
-          نسبة الفوز المتوقعة — بناءً على: مشكلة حقيقية · فريق مكتمل · Offline نادر · Explainable AI · Demo حي
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="foot"><div class="foot-logo">ريفا الصحي</div><div class="foot-sub">HSIL Hackathon · April 2026 · رعاية افتراضية ذكية</div></div>
-</div>
+</footer>
 
 <script>
-// PAGE SWITCHING
-function showPage(name, btn){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
-  btn.classList.add('active');
-  window.scrollTo(0,0);
-}
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
 
-// FEATURE TABS
-function showFeat(name, btn){
-  document.querySelectorAll('.feat-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.feat-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('feat-'+name).classList.add('active');
-  btn.classList.add('active');
-}
-
-// CANVAS PARTICLES
-const cv=document.getElementById('cv');
-const ctx=cv.getContext('2d');
-let W,H,pts=[];
-function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight}
-function Pt(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.5+.4;this.vx=(Math.random()-.5)*.25;this.vy=(Math.random()-.5)*.25;this.a=Math.random()*.4+.1;this.c=Math.random()>.6?'0,191,165':'0,230,118'}
-Pt.prototype.tick=function(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W)this.vx*=-1;if(this.y<0||this.y>H)this.vy*=-1};
-Pt.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(${this.c},${this.a})`;ctx.fill()};
-function init(){resize();pts=Array.from({length:70},()=>new Pt())}
-function loop(){
-  ctx.clearRect(0,0,W,H);
-  pts.forEach(p=>{p.tick();p.draw()});
-  for(let i=0;i<pts.length;i++){
-    for(let j=i+1;j<pts.length;j++){
-      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<110){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(0,191,165,${.05*(1-d/110)})`;ctx.lineWidth=.5;ctx.stroke()}
-    }
-  }
-  requestAnimationFrame(loop);
-}
-window.addEventListener('resize',resize);
-init();loop();
-
-// ANIMATE BARS on AI page
-document.querySelectorAll('.acc-bar').forEach(b=>{
-  const w=b.dataset.width||'0';
-  b.style.width='0%';
-  setTimeout(()=>{b.style.width=w+'%'},300);
-});
+  reveals.forEach(el => observer.observe(el));
 </script>
+
 </body>
 </html>

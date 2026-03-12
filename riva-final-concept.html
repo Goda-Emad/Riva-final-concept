@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ريفا — الفكرة النهائية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --teal:   #0d9488;
+  --teal-l: #2dd4bf;
+  --green:  #10b981;
+  --amber:  #f59e0b;
+  --red:    #ef4444;
+  --bg:     #060f1a;
+  --bg2:    #0d1f2d;
+  --bg3:    #112233;
+  --border: rgba(45,212,191,.15);
+  --text:   #e2f0ff;
+  --muted:  #7a9ab5;
+}
+body {
+  font-family:'Cairo',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding:40px 20px 60px;
+}
+
+/* animated bg */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(13,148,136,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 80%, rgba(16,185,129,.08) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+.wrap { max-width:960px; margin:0 auto; position:relative; }
+
+/* ══ HERO ══ */
+.hero { text-align:center; margin-bottom:64px; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(13,148,136,.12);
+  border:1px solid rgba(13,148,136,.3);
+  border-radius:30px; padding:6px 18px;
+  font-size:.78rem; font-weight:700; color:var(--teal-l);
+  letter-spacing:.06em; margin-bottom:20px;
+}
+.hero h1 {
+  font-size:clamp(2.2rem,6vw,3.8rem);
+  font-weight:900; line-height:1.1;
+  background:linear-gradient(135deg, #fff 30%, var(--teal-l));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  margin-bottom:12px;
+}
+.hero-sub {
+  font-size:1.05rem; color:var(--muted);
+  max-width:540px; margin:0 auto 28px; line-height:1.7;
+}
+.hero-stats {
+  display:flex; justify-content:center; gap:32px; flex-wrap:wrap;
+}
+.stat { text-align:center; }
+.stat-num {
+  font-size:1.9rem; font-weight:900;
+  background:linear-gradient(135deg,var(--teal-l),var(--green));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.stat-label { font-size:.72rem; color:var(--muted); margin-top:2px; }
+
+/* ══ PROBLEM ══ */
+.problem-box {
+  background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(239,68,68,.03));
+  border:1px solid rgba(239,68,68,.2);
+  border-radius:20px; padding:28px 32px;
+  margin-bottom:40px; position:relative; overflow:hidden;
+}
+.problem-box::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,#ef4444,transparent);
+}
+.section-title {
+  font-size:.7rem; font-weight:800; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:12px;
+}
+.problem-text {
+  font-size:1.1rem; font-weight:600; line-height:1.7;
+}
+.problem-text span { color:#f87171; }
+
+/* ══ SOLUTION FLOW ══ */
+.flow-title { text-align:center; margin-bottom:32px; }
+.flow-title h2 { font-size:1.5rem; font-weight:800; }
+.flow-title p  { color:var(--muted); font-size:.88rem; margin-top:6px; }
+
+.flow {
+  display:grid;
+  grid-template-columns:1fr 40px 1fr 40px 1fr;
+  gap:0; align-items:center;
+  margin-bottom:40px;
+}
+@media(max-width:640px){
+  .flow { grid-template-columns:1fr; }
+  .flow-arrow { transform:rotate(90deg); }
+}
+
+.flow-card {
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:18px; padding:22px 18px;
+  position:relative; overflow:hidden;
+  transition:transform .2s;
+}
+.flow-card:hover { transform:translateY(-3px); }
+.flow-card::after {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(13,148,136,.08),transparent 60%);
+  pointer-events:none;
+}
+.flow-num {
+  width:28px; height:28px; border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--green));
+  display:grid; place-items:center;
+  font-size:.75rem; font-weight:800;
+  margin-bottom:12px;
+}
+.flow-icon { font-size:1.8rem; margin-bottom:8px; }
+.flow-card h3 { font-size:.95rem; font-weight:800; margin-bottom:6px; }
+.flow-card p  { font-size:.75rem; color:var(--muted); line-height:1.6; }
+
+.flow-arrow {
+  display:flex; justify-content:center; align-items:center;
+  color:var(--teal); font-size:1.4rem;
+}
+
+/* ══ OFFLINE BADGE ══ */
+.offline-banner {
+  background:linear-gradient(135deg,rgba(13,148,136,.12),rgba(16,185,129,.06));
+  border:1px solid rgba(13,148,136,.25);
+  border-radius:18px; padding:24px 28px;
+  margin-bottom:40px;
+  display:flex; gap:20px; align-items:center; flex-wrap:wrap;
+}
+.offline-icon { font-size:2.5rem; flex-shrink:0; }
+.offline-text h3 { font-size:1.05rem; font-weight:800; margin-bottom:6px; }
+.offline-text p  { font-size:.8rem; color:var(--muted); line-height:1.6; }
+.offline-pills {
+  display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;
+}
+.opill {
+  font-size:.7rem; font-weight:700;
+  padding:4px 12px; border-radius:20px;
+  background:rgba(13,148,136,.15);
+  border:1px solid rgba(13,148,136,.3);
+  color:var(--teal-l);
+}
+.opill.off { background:rgba(100,116,139,.12); border-color:rgba(100,116,139,.2); color:var(--muted); }
+
+/* ══ RISK LEVELS ══ */
+.risk-section { margin-bottom:40px; }
+.risk-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:500px){ .risk-grid { grid-template-columns:1fr; } }
+.risk-card {
+  border-radius:16px; padding:20px 16px; text-align:center;
+  position:relative; overflow:hidden;
+  border:1px solid;
+}
+.risk-card.g { background:rgba(16,185,129,.07);  border-color:rgba(16,185,129,.25); }
+.risk-card.a { background:rgba(245,158,11,.07);  border-color:rgba(245,158,11,.25); }
+.risk-card.r { background:rgba(239,68,68,.07);   border-color:rgba(239,68,68,.25); }
+.risk-emoji  { font-size:2rem; margin-bottom:8px; }
+.risk-level  { font-size:.9rem; font-weight:800; margin-bottom:4px; }
+.risk-card.g .risk-level { color:#34d399; }
+.risk-card.a .risk-level { color:#fbbf24; }
+.risk-card.r .risk-level { color:#f87171; }
+.risk-pct   { font-size:1.5rem; font-weight:900; margin-bottom:4px; }
+.risk-action{ font-size:.72rem; color:var(--muted); }
+
+/* ══ QR DEMO ══ */
+.qr-section {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:18px; padding:24px 28px;
+  margin-bottom:40px;
+  display:flex; gap:24px; align-items:center; flex-wrap:wrap;
+}
+.qr-visual {
+  width:90px; height:90px; border-radius:12px;
+  background:white; display:grid; place-items:center;
+  font-size:3rem; flex-shrink:0;
+  box-shadow:0 0 30px rgba(13,148,136,.3);
+}
+.qr-info h3 { font-size:1rem; font-weight:800; margin-bottom:6px; }
+.qr-info p  { font-size:.78rem; color:var(--muted); line-height:1.6; }
+.qr-code-text {
+  font-family:monospace; font-size:.9rem;
+  color:var(--teal-l); font-weight:700;
+  background:rgba(13,148,136,.1);
+  padding:6px 14px; border-radius:8px;
+  display:inline-block; margin-top:8px;
+}
+
+/* ══ CHAT PREVIEW ══ */
+.chat-section { margin-bottom:40px; }
+.chat-box {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:18px; padding:20px;
+  max-width:480px; margin:0 auto;
+}
+.chat-header {
+  display:flex; align-items:center; gap:10px;
+  padding-bottom:14px; border-bottom:1px solid var(--border);
+  margin-bottom:14px;
+}
+.chat-avatar {
+  width:36px; height:36px; border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--green));
+  display:grid; place-items:center; font-size:1.1rem;
+}
+.chat-name  { font-size:.88rem; font-weight:700; }
+.chat-status{ font-size:.68rem; color:var(--teal-l); }
+.online-dot {
+  width:8px; height:8px; border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 6px var(--green);
+  display:inline-block; margin-left:4px;
+}
+
+.msg { display:flex; gap:8px; margin-bottom:10px; align-items:flex-end; }
+.msg.u { flex-direction:row-reverse; }
+.bubble {
+  max-width:78%; padding:9px 13px; font-size:.78rem; line-height:1.55;
+  border-radius:16px;
+}
+.msg.b .bubble { background:rgba(13,148,136,.18); border-radius:4px 16px 16px 16px; }
+.msg.u .bubble { background:rgba(255,255,255,.07); border-radius:16px 4px 16px 16px; }
+.av {
+  width:26px; height:26px; border-radius:50%;
+  display:grid; place-items:center; font-size:.8rem; flex-shrink:0;
+}
+.av.b { background:var(--teal); }
+.av.u { background:var(--bg3); border:1px solid rgba(255,255,255,.1); }
+.typing {
+  display:flex; gap:4px; align-items:center; padding:10px 14px;
+  background:rgba(13,148,136,.1); border-radius:4px 14px 14px 14px;
+  width:fit-content;
+}
+.dot { width:6px; height:6px; border-radius:50%; background:var(--teal-l); animation:bounce .9s infinite; }
+.dot:nth-child(2){ animation-delay:.2s; }
+.dot:nth-child(3){ animation-delay:.4s; }
+@keyframes bounce { 0%,60%,100%{ transform:translateY(0); } 30%{ transform:translateY(-6px); } }
+
+/* ══ TECH STACK ══ */
+.tech-section { margin-bottom:40px; }
+.tech-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
+.tech-card {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:14px; padding:16px;
+}
+.tech-card h4 { font-size:.8rem; font-weight:700; margin-bottom:8px; color:var(--teal-l); }
+.tech-list { display:flex; flex-wrap:wrap; gap:6px; }
+.tag {
+  font-size:.68rem; font-weight:600;
+  padding:3px 10px; border-radius:20px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+/* ══ TEAM ══ */
+.team-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:12px;
+}
+.team-card {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:14px; padding:16px 12px; text-align:center;
+}
+.team-emoji { font-size:1.8rem; margin-bottom:8px; }
+.team-role  { font-size:.78rem; font-weight:700; }
+.team-you   {
+  border-color:rgba(13,148,136,.4);
+  background:linear-gradient(135deg,rgba(13,148,136,.1),rgba(16,185,129,.05));
+}
+.you-badge  {
+  display:inline-block; font-size:.6rem; font-weight:700;
+  background:var(--teal); color:white;
+  padding:2px 8px; border-radius:10px; margin-top:4px;
+}
+
+.divider {
+  height:1px; background:var(--border); margin:40px 0;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">🏥 HSIL Hackathon 2026 · منصة ريفا الصحي</div>
+    <h1>رعاية صحية ذكية<br>للمناطق الريفية</h1>
+    <p class="hero-sub">شاتبوت ذكاء اصطناعي بالعربي يساعد المرضى في تشخيص أعراضهم وتوجيههم للرعاية المناسبة — حتى بدون إنترنت</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">91%+</div><div class="stat-label">دقة النموذج</div></div>
+      <div class="stat"><div class="stat-num">3B+</div><div class="stat-label">شخص بلا رعاية صحية كافية</div></div>
+      <div class="stat"><div class="stat-num">30%</div><div class="stat-label">تقليل زيارات غير ضرورية</div></div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="problem-box">
+    <div class="section-title">⚡ المشكلة</div>
+    <div class="problem-text">
+      ملايين المصريين في الريف <span>يقطعون ساعات</span> للوصول لمستشفى،
+      بسبب عدم معرفتهم هل حالتهم تستدعي ذلك أم لا —
+      فتمتلئ المستشفيات بحالات <span>بسيطة</span> بينما حالات <span>خطيرة</span> تتأخر.
+    </div>
+  </div>
+
+  <!-- SOLUTION FLOW -->
+  <div class="flow-title">
+    <h2>✨ كيف تعمل ريفا؟</h2>
+    <p>٣ خطوات بسيطة من الأعراض للعلاج</p>
+  </div>
+
+  <div class="flow">
+    <div class="flow-card">
+      <div class="flow-num">1</div>
+      <div class="flow-icon">💬</div>
+      <h3>تكلم مع ريفا</h3>
+      <p>المريض يكتب أعراضه بالعربي العامي — الشاتبوت يسأله أسئلة ذكية لفهم حالته</p>
+    </div>
+    <div class="flow-arrow">←</div>
+    <div class="flow-card">
+      <div class="flow-num">2</div>
+      <div class="flow-icon">🧠</div>
+      <h3>تحليل AI فوري</h3>
+      <p>Claude API + ML Model يحللان الأعراض ويحددان مستوى الخطورة بدقة 91%+</p>
+    </div>
+    <div class="flow-arrow">←</div>
+    <div class="flow-card">
+      <div class="flow-num">3</div>
+      <div class="flow-icon">📋</div>
+      <h3>توجيه دقيق</h3>
+      <p>إما علاج منزلي أو زيارة مركز أو تحويل فوري للمستشفى مع QR Code</p>
+    </div>
+  </div>
+
+  <!-- OFFLINE -->
+  <div class="offline-banner">
+    <div class="offline-icon">📡</div>
+    <div class="offline-text">
+      <h3>يعمل حتى بدون إنترنت ✅</h3>
+      <p>الميزة الأهم — مصمم خصيصاً للريف حيث الإنترنت ضعيف أو غير متاح</p>
+      <div class="offline-pills">
+        <span class="opill">🌐 متصل → Claude API</span>
+        <span class="opill off">📴 بدون نت → Rule-Based Engine محلي</span>
+        <span class="opill">🤖 ML Model يشتغل offline دايماً</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RISK LEVELS -->
+  <div class="risk-section">
+    <div class="section-title" style="text-align:center; margin-bottom:16px;">🎯 مستويات الخطورة</div>
+    <div class="risk-grid">
+      <div class="risk-card g">
+        <div class="risk-emoji">✅</div>
+        <div class="risk-level">حالة عادية</div>
+        <div class="risk-pct" style="color:#34d399;">0–30%</div>
+        <div class="risk-action">علاج منزلي + نصائح</div>
+      </div>
+      <div class="risk-card a">
+        <div class="risk-emoji">⚠️</div>
+        <div class="risk-level">تحتاج متابعة</div>
+        <div class="risk-pct" style="color:#fbbf24;">30–65%</div>
+        <div class="risk-action">زيارة مركز صحي خلال 24h</div>
+      </div>
+      <div class="risk-card r">
+        <div class="risk-emoji">🚨</div>
+        <div class="risk-level">حالة طارئة</div>
+        <div class="risk-pct" style="color:#f87171;">65–100%</div>
+        <div class="risk-action">تحويل فوري + QR Code</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR -->
+  <div class="qr-section">
+    <div class="qr-visual">⬛</div>
+    <div class="qr-info">
+      <h3>🔖 كود الإحالة الذكي</h3>
+      <p>الحالات الخطيرة تأخذ QR Code فوري — الطبيب يمسحه في المستشفى ويشوف كل التفاصيل دون إعادة الشرح</p>
+      <div class="qr-code-text">RIVA-20260415-X9Y2Z3</div>
+    </div>
+  </div>
+
+  <!-- CHAT PREVIEW -->
+  <div class="chat-section">
+    <div class="section-title" style="text-align:center; margin-bottom:16px;">💬 مثال على المحادثة</div>
+    <div class="chat-box">
+      <div class="chat-header">
+        <div class="chat-avatar">🏥</div>
+        <div>
+          <div class="chat-name">ريفا <span class="online-dot"></span></div>
+          <div class="chat-status">مساعدك الصحي الذكي</div>
+        </div>
+      </div>
+      <div class="msg b">
+        <div class="av b">🤖</div>
+        <div class="bubble">مرحباً! أنا ريفا 👋 إيه اللي بتحس بيه النهارده؟</div>
+      </div>
+      <div class="msg u">
+        <div class="av u">👤</div>
+        <div class="bubble">عندي صداع وحرارة من امبارح</div>
+      </div>
+      <div class="msg b">
+        <div class="av b">🤖</div>
+        <div class="bubble">الحرارة عالية ولا خفيفة؟ وعندك ألم في جسمك؟</div>
+      </div>
+      <div class="msg u">
+        <div class="av u">👤</div>
+        <div class="bubble">عالية شوية وجسمي بيوجعني</div>
+      </div>
+      <div class="msg b">
+        <div class="av b">🤖</div>
+        <div class="bubble">🚨 بناءً على أعراضك — ننصح بزيارة مركز صحي خلال 24 ساعة<br><br><strong>كود الإحالة: RIVA-20260415-A1B2</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TECH STACK -->
+  <div class="tech-section">
+    <div class="section-title" style="text-align:center; margin-bottom:16px;">⚙️ التقنيات</div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h4>📱 Mobile App</h4>
+        <div class="tech-list">
+          <span class="tag">React Native</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">Arabic RTL</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <h4>🤖 AI Engine</h4>
+        <div class="tech-list">
+          <span class="tag">Claude API</span>
+          <span class="tag">Rule-Based Offline</span>
+          <span class="tag">NLP عربي</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <h4>🧠 ML Model</h4>
+        <div class="tech-list">
+          <span class="tag">Python</span>
+          <span class="tag">Random Forest</span>
+          <span class="tag">SHAP</span>
+          <span class="tag">XGBoost</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <h4>⚙️ Backend</h4>
+        <div class="tech-list">
+          <span class="tag">Node.js</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">REST API</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <h4>🌐 Web Dashboard</h4>
+        <div class="tech-list">
+          <span class="tag">React</span>
+          <span class="tag">Plotly</span>
+          <span class="tag">QR Scanner</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TEAM -->
+  <div class="section-title" style="text-align:center; margin-bottom:16px;">👥 الفريق</div>
+  <div class="team-grid">
+    <div class="team-card team-you">
+      <div class="team-emoji">🧠</div>
+      <div class="team-role">AI / ML Engineer</div>
+      <div class="you-badge">أنت ✅</div>
+    </div>
+    <div class="team-card">
+      <div class="team-emoji">📱</div>
+      <div class="team-role">Mobile Dev</div>
+    </div>
+    <div class="team-card">
+      <div class="team-emoji">⚙️</div>
+      <div class="team-role">Backend Dev</div>
+    </div>
+    <div class="team-card">
+      <div class="team-emoji">🩺</div>
+      <div class="team-role">طبيب</div>
+    </div>
+    <div class="team-card">
+      <div class="team-emoji">🎨</div>
+      <div class="team-role">UI/UX</div>
+    </div>
+    <div class="team-card">
+      <div class="team-emoji">💼</div>
+      <div class="team-role">Business</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

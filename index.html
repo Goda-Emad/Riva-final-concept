@@ -315,10 +315,10 @@
             color: #64748b;
         }
         
-        /* Team - 4 أعضاء */
+        /* Team - 3 أعضاء (حسب فريقكم) */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-bottom: 80px;
         }
@@ -329,6 +329,12 @@
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0,0,0,0.05);
             border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
         
         .member-header {
@@ -346,6 +352,11 @@
             height: 120px;
             line-height: 120px;
             border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover .member-header i {
+            transform: scale(1.1);
         }
         
         .member-header h4 {
@@ -362,9 +373,21 @@
             padding: 30px;
         }
         
+        .member-skills {
+            list-style: none;
+        }
+        
         .member-skills li {
             font-size: 1.2rem;
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .member-skills i {
+            color: #27ae60;
+            font-size: 1.2rem;
         }
         
         /* Architecture Diagram */
@@ -510,12 +533,15 @@
             .stats-section,
             .features-grid,
             .tech-grid,
-            .team-grid,
             .arch-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
             .steps-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -528,10 +554,10 @@
             .stats-section,
             .features-grid,
             .tech-grid,
-            .team-grid,
             .arch-grid,
             .steps-container,
-            .problem-solution {
+            .problem-solution,
+            .team-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -728,69 +754,56 @@
                 </div>
             </div>
             
-            <!-- Team -->
+            <!-- Team - فريقكم الجديد -->
             <h2 class="section-title">فريق العمل</h2>
             <div class="team-grid">
+                <!-- Goda Emad - AI Engineer & Technical Lead -->
                 <div class="team-member">
                     <div class="member-header">
                         <i class="fas fa-robot"></i>
-                        <h4>Goda</h4>
+                        <h4>Goda Emad</h4>
                         <div class="role">AI Engineer & Technical Lead</div>
                     </div>
                     <div class="member-body">
-                        <ul class="member-skills" style="list-style: none;">
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Machine Learning / NLP</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Python / Streamlit</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Offline AI Models</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Model Optimization</li>
+                        <ul class="member-skills">
+                            <li><i class="fas fa-check"></i> Machine Learning / NLP</li>
+                            <li><i class="fas fa-check"></i> Python / Streamlit</li>
+                            <li><i class="fas fa-check"></i> Offline AI Models</li>
+                            <li><i class="fas fa-check"></i> Model Optimization</li>
                         </ul>
                     </div>
                 </div>
                 
+                <!-- Nada Khaled - UI/UX Lead & Frontend -->
                 <div class="team-member">
                     <div class="member-header">
                         <i class="fas fa-paint-brush"></i>
-                        <h4>أحمد</h4>
+                        <h4>Nada Khaled</h4>
                         <div class="role">UI/UX Lead & Frontend</div>
                     </div>
                     <div class="member-body">
-                        <ul class="member-skills" style="list-style: none;">
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> UI/UX Design (Figma)</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> CSS / Responsive Web</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> RTL / Arabic Support</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Pitch Deck Design</li>
+                        <ul class="member-skills">
+                            <li><i class="fas fa-check"></i> UI/UX Design (Figma)</li>
+                            <li><i class="fas fa-check"></i> CSS / Responsive Web</li>
+                            <li><i class="fas fa-check"></i> RTL / Arabic Support</li>
+                            <li><i class="fas fa-check"></i> Frontend Development</li>
                         </ul>
                     </div>
                 </div>
                 
+                <!-- Mohamed Gharieb - Business & Medical Expert -->
                 <div class="team-member">
                     <div class="member-header">
-                        <i class="fas fa-user-md"></i>
-                        <h4>الطبيب</h4>
-                        <div class="role">Medical Expert</div>
+                        <i class="fas fa-briefcase-medical"></i>
+                        <h4>Mohamed Gharieb</h4>
+                        <div class="role">Business & Medical Expert</div>
                     </div>
                     <div class="member-body">
-                        <ul class="member-skills" style="list-style: none;">
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Medical Knowledge</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Symptoms Analysis</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Diagnosis Validation</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Health Content</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-header">
-                        <i class="fas fa-chart-line"></i>
-                        <h4>Business</h4>
-                        <div class="role">Business & Strategy</div>
-                    </div>
-                    <div class="member-body">
-                        <ul class="member-skills" style="list-style: none;">
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Business Model</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Market Analysis</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Pitch Presentation</li>
-                            <li><i class="fas fa-check" style="color: #27ae60;"></i> Stakeholder Communication</li>
+                        <ul class="member-skills">
+                            <li><i class="fas fa-check"></i> Medical Knowledge</li>
+                            <li><i class="fas fa-check"></i> Business Model</li>
+                            <li><i class="fas fa-check"></i> Symptoms Analysis</li>
+                            <li><i class="fas fa-check"></i> Market Strategy</li>
                         </ul>
                     </div>
                 </div>
@@ -818,6 +831,9 @@
         <div class="footer">
             <p style="font-size: 1.5rem; margin-bottom: 20px;">منصة ريفا - رعاية افتراضية ذكية للمناطق الريفية</p>
             <p>© 2026 فريق ريفا - هاكاثون HSIL أبريل 2026</p>
+            <p style="margin-top: 20px; font-size: 1.1rem; opacity: 0.8;">
+                <i class="fas fa-user"></i> Goda Emad | <i class="fas fa-user"></i> Nada Khaled | <i class="fas fa-user"></i> Mohamed Gharieb
+            </p>
             <p style="margin-top: 30px; font-size: 1rem; opacity: 0.6;">
                 <i class="fas fa-laptop"></i> منصة ويب متكاملة 
                 | <i class="fas fa-wifi-slash"></i> تعمل بدون إنترنت بعد التحميل الأول
@@ -838,6 +854,7 @@
         
         // Show web platform info
         console.log('ريفا - منصة ويب متكاملة');
+        console.log('فريق العمل: Goda Emad, Nada Khaled, Mohamed Gharieb');
         console.log('تعمل بدون إنترنت بعد التحميل الأول');
     </script>
 </body>

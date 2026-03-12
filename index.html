@@ -234,6 +234,175 @@
             font-size: 0.9rem;
         }
 
+        /* Triage Levels Section */
+        .triage-section {
+            background: #f8fafc;
+            padding: 60px;
+            margin: 40px 0;
+        }
+
+        .triage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .triage-card {
+            padding: 35px;
+            border-radius: 25px;
+            color: white;
+            transition: transform 0.3s;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .triage-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .triage-card.emergency {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        }
+
+        .triage-card.moderate {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .triage-card.mild {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .triage-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .triage-level {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .triage-desc {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .triage-examples {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .triage-examples ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .triage-examples li {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .triage-examples li::before {
+            content: "•";
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .triage-action {
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Medical Advice Section - جديدة */
+        .advice-section {
+            padding: 60px;
+            background: white;
+        }
+
+        .advice-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .advice-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(26, 60, 114, 0.1);
+        }
+
+        .advice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+        }
+
+        .advice-icon {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 20px;
+        }
+
+        .advice-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #0a1f44;
+        }
+
+        .advice-list {
+            list-style: none;
+            text-align: right;
+        }
+
+        .advice-list li {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #475569;
+        }
+
+        .advice-list i {
+            color: #10b981;
+            font-size: 1.1rem;
+        }
+
+        .advice-tip {
+            margin-top: 20px;
+            padding: 15px;
+            background: #1e3c72;
+            color: white;
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+
         /* Features Grid */
         .features-grid {
             display: grid;
@@ -758,6 +927,8 @@
             .stats-section,
             .features-grid,
             .challenges-grid,
+            .triage-grid,
+            .advice-grid,
             .models-grid,
             .pages-grid,
             .team-grid,
@@ -776,6 +947,8 @@
             .stats-section,
             .features-grid,
             .challenges-grid,
+            .triage-grid,
+            .advice-grid,
             .models-grid,
             .pages-grid,
             .team-grid,
@@ -851,131 +1024,66 @@
             </div>
         </div>
 
-        <!-- Models -->
-        <div class="models-section">
-            <h2 class="section-title">🧠 النماذج الأربعة للذكاء الاصطناعي</h2>
-            <div class="models-grid">
-                <div class="model-card">
-                    <div class="model-icon"><i class="fas fa-heartbeat"></i></div>
-                    <div class="model-name">Triage Model</div>
-                    <div class="model-type">XGBoost</div>
-                    <div class="model-accuracy"><i class="fas fa-check-circle"></i> 91%</div>
-                </div>
-                <div class="model-card">
-                    <div class="model-icon"><i class="fas fa-baby"></i></div>
-                    <div class="model-name">Pregnancy Model</div>
-                    <div class="model-type">Random Forest</div>
-                    <div class="model-accuracy"><i class="fas fa-check-circle"></i> 89%</div>
-                </div>
-                <div class="model-card">
-                    <div class="model-icon"><i class="fas fa-comment-dots"></i></div>
-                    <div class="model-name">Chatbot Model</div>
-                    <div class="model-type">DistilBERT</div>
-                    <div class="model-accuracy"><i class="fas fa-check-circle"></i> 87%</div>
-                </div>
-                <div class="model-card">
-                    <div class="model-icon"><i class="fas fa-school"></i></div>
-                    <div class="model-name">School Model</div>
-                    <div class="model-type">K-Means</div>
-                    <div class="model-accuracy"><i class="fas fa-check-circle"></i> 85%</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pages -->
-        <div class="pages-section">
-            <h2 class="section-title">📱 صفحات RIVA (8 صفحات)</h2>
-            <div class="pages-grid">
-                <div class="page-card"><i class="fas fa-home page-icon"></i><div class="page-number">01</div><div class="page-name">الرئيسية</div></div>
-                <div class="page-card"><i class="fas fa-comment-dots page-icon"></i><div class="page-number">02</div><div class="page-name">المحادثة <span class="new-badge">DistilBERT</span></div></div>
-                <div class="page-card"><i class="fas fa-stethoscope page-icon"></i><div class="page-number">03</div><div class="page-name">الفرز الطبي <span class="new-badge">XGBoost</span></div></div>
-                <div class="page-card"><i class="fas fa-qrcode page-icon"></i><div class="page-number">04</div><div class="page-name">النتيجة + QR <span class="new-badge">Explainable AI</span></div></div>
-                <div class="page-card"><i class="fas fa-history page-icon"></i><div class="page-number">05</div><div class="page-name">سجل المريض</div></div>
-                <div class="page-card"><i class="fas fa-baby page-icon"></i><div class="page-number">06</div><div class="page-name">صحة الأم <span class="new-badge">RF</span></div></div>
-                <div class="page-card"><i class="fas fa-school page-icon"></i><div class="page-number">07</div><div class="page-name">الصحة المدرسية <span class="new-badge">K-Means</span></div></div>
-                <div class="page-card"><i class="fas fa-wifi-slash page-icon"></i><div class="page-number">08</div><div class="page-name">بدون نت</div></div>
-            </div>
-        </div>
-
-        <!-- Explainable AI Demo -->
-        <div style="padding: 0 60px;">
-            <div class="explainable-section">
-                <h2 class="section-title" style="color: white;">🔍 Explainable AI - شفافية كاملة</h2>
-                <div class="explainable-box">
-                    <div class="explainable-title">تم توجيهك إلى: <span style="color: white;">🧠 مخ وأعصاب</span></div>
-                    
-                    <div style="font-size: 1.3rem; margin-bottom: 20px;">لماذا؟</div>
-                    
-                    <ul class="symptom-list">
-                        <li><i class="fas fa-check-circle"></i> صداع شديد ← مرتبط بمشاكل عصبية</li>
-                        <li><i class="fas fa-check-circle"></i> تنميل في الأطراف ← علامة عصبية</li>
-                        <li><i class="fas fa-check-circle"></i> زغللة في الرؤية ← مرتبط بالجهاز العصبي</li>
-                    </ul>
-                    
-                    <div class="confidence-bar">
-                        <div class="confidence-fill"></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span>نسبة الثقة في التوجيه: 87%</span>
-                        <span><i class="fas fa-robot"></i> نموذج XGBoost بدقة 91%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Team -->
-        <div class="team-section">
-            <h2 class="section-title">👥 فريق RIVA</h2>
-            <div class="team-grid">
-                <!-- Goda -->
-                <div class="team-member">
-                    <div class="member-header">
-                        <i class="fas fa-robot"></i>
-                        <h3>Goda Emad</h3>
-                        <div class="role">AI Engineer & Technical Lead</div>
-                    </div>
-                    <div class="member-body">
-                        <ul class="member-skills">
-                            <li><i class="fas fa-check"></i> 4 نماذج AI (XGBoost, RF, DistilBERT, K-Means)</li>
-                            <li><i class="fas fa-check"></i> ONNX + Quantization (حجم أقل 75%)</li>
-                            <li><i class="fas fa-check"></i> Explainable AI + Caching</li>
-                            <li><i class="fas fa-check"></i> model_loader.py, model_router.py</li>
+        <!-- Triage Levels -->
+        <div class="triage-section">
+            <h2 class="section-title">🚦 نظام تصنيف الحالات (Triage)</h2>
+            <div class="triage-grid">
+                <div class="triage-card emergency">
+                    <div class="triage-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="triage-level">🔴 طارئ (Emergency)</div>
+                    <div class="triage-desc">حالات حرجة تحتاج تدخل طبي فوري خلال دقائق</div>
+                    <div class="triage-examples">
+                        <strong>أمثلة:</strong>
+                        <ul>
+                            <li>ألم شديد في الصدر + ضيق تنفس</li>
+                            <li>صداع مفاجئ + تنميل + زغللة</li>
+                            <li>نزيف حاد</li>
+                            <li>فقدان وعي</li>
                         </ul>
-                        <div class="responsibility">
-                            <strong>المسؤول عن:</strong> 🧠 ai/، 📓 notebooks/، 🔧 scripts/
-                        </div>
                     </div>
+                    <div class="triage-action">🚑 توجه لأقرب مستشفى فوراً</div>
                 </div>
                 
-                <!-- Nada -->
-                <div class="team-member">
-                    <div class="member-header">
-                        <i class="fas fa-paint-brush"></i>
-                        <h3>Nada Khaled</h3>
-                        <div class="role">UI/UX Lead & Frontend</div>
-                    </div>
-                    <div class="member-body">
-                        <ul class="member-skills">
-                            <li><i class="fas fa-check"></i> 8 صفحات Streamlit بتصميم عربي</li>
-                            <li><i class="fas fa-check"></i> PWA + Service Workers</li>
-                            <li><i class="fas fa-check"></i> Explainable AI Box في صفحة النتيجة</li>
-                            <li><i class="fas fa-check"></i> RTL CSS + تجربة مستخدم</li>
+                <div class="triage-card moderate">
+                    <div class="triage-icon"><i class="fas fa-clock"></i></div>
+                    <div class="triage-level">🟡 متوسط (Moderate)</div>
+                    <div class="triage-desc">حالات تحتاج استشارة طبية خلال 24 ساعة</div>
+                    <div class="triage-examples">
+                        <strong>أمثلة:</strong>
+                        <ul>
+                            <li>حمى مستمرة لمدة 3 أيام</li>
+                            <li>صداع متوسط + غثيان</li>
+                            <li>ألم في البطن متقطع</li>
+                            <li>كحة مستمرة مع بلغم</li>
                         </ul>
-                        <div class="responsibility">
-                            <strong>المسؤولة عن:</strong> 🌐 web/، 📱 pwa-config/، 🎨 static/css/
-                        </div>
                     </div>
+                    <div class="triage-action">🏥 استشر طبيب خلال 24 ساعة</div>
                 </div>
                 
-                <!-- Mohamed -->
-                <div class="team-member">
-                    <div class="member-header">
-                        <i class="fas fa-briefcase-medical"></i>
-                        <h3>Mohamed Gharieb</h3>
-                        <div class="role">Business & Medical Expert</div>
+                <div class="triage-card mild">
+                    <div class="triage-icon"><i class="fas fa-home"></i></div>
+                    <div class="triage-level">🟢 بسيط (Mild)</div>
+                    <div class="triage-desc">حالات بسيطة يمكن التعامل معها منزلياً</div>
+                    <div class="triage-examples">
+                        <strong>أمثلة:</strong>
+                        <ul>
+                            <li>رشح خفيف بدون حرارة</li>
+                            <li>صداع خفيف بعد إجهاد</li>
+                            <li>كحة بسيطة</li>
+                            <li>إرهاق عام</li>
+                        </ul>
                     </div>
-                    <div class="member-body">
-                        <ul class="member-skills">
-                            <li><i class="fas fa-check"></i> قائمة التخصصات الطبية (6 تخصصات)</li>
-                            <li><i class="fas fa-check"></i> ربط الأعراض بالتخصصات + قواعد التفسير</li>
-                            <
+                    <div class="triage-action">💚 رعاية منزلية مع متابعة</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Advice Section -->
+        <div class="advice-section">
+            <h2 class="section-title">💊 نصائح طبية عامة (من فريقنا الطبي)</h2>
+            <div class="advice-grid">
+                <div class="advice-card">
+                    <div class="advice-icon"><i class="fas fa-thermometer-half"></i></div>
+                    <div class="advice-title">الحمى (ارتفاع درجة الحرارة)</div>
+                    <ul class="advice-list">
+                        <li><i class="fas fa-check"></i> اشرب سوائل كثيرة (ماء، شاي أعشاب)</li>

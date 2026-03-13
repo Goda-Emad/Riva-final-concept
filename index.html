@@ -3,953 +3,796 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>منصة ريفا الصحي — نظرة عامة</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<title>ريفا — الرؤية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green-deep: #0a2e1a;
-    --green-mid: #0f4a2a;
-    --green-bright: #1a7a42;
-    --green-accent: #22c55e;
-    --green-glow: #4ade80;
-    --gold: #f5c842;
-    --gold-light: #fde68a;
-    --cream: #faf7f0;
-    --white: #ffffff;
-    --text-muted: #94a3b8;
-    --card-bg: rgba(15, 74, 42, 0.4);
-    --border: rgba(34, 197, 94, 0.2);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Cairo', sans-serif;
-    background: var(--green-deep);
-    color: var(--white);
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  /* Background texture */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(26,122,66,0.3) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(10,46,26,0.8) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 60% at 60% 10%, rgba(34,197,94,0.08) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* Grid overlay */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(34,197,94,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(34,197,94,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ===== HERO ===== */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    position: relative;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(34,197,94,0.1);
-    border: 1px solid rgba(34,197,94,0.3);
-    border-radius: 100px;
-    padding: 0.4rem 1.2rem;
-    font-size: 0.8rem;
-    color: var(--green-glow);
-    letter-spacing: 0.1em;
-    margin-bottom: 2rem;
-    animation: fadeDown 0.8s ease both;
-  }
-
-  .hero-badge .dot {
-    width: 6px; height: 6px;
-    background: var(--green-accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-
-  .hero-logo {
-    font-family: 'Tajawal', sans-serif;
-    font-size: clamp(4rem, 12vw, 9rem);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--white) 0%, var(--green-glow) 50%, var(--gold) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-    animation: fadeUp 0.8s ease 0.2s both;
-  }
-
-  .hero-subtitle-ar {
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    color: var(--green-glow);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s ease 0.4s both;
-  }
-
-  .hero-tagline {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    color: rgba(255,255,255,0.6);
-    max-width: 600px;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-    animation: fadeUp 0.8s ease 0.6s both;
-  }
-
-  .hero-stats {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    animation: fadeUp 0.8s ease 0.8s both;
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-number {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--green-accent);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-top: 0.3rem;
-    letter-spacing: 0.05em;
-  }
-
-  /* Scroll indicator */
-  .scroll-hint {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-muted);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    animation: bounce 2s infinite;
-  }
-
-  .scroll-hint::after {
-    content: '';
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--green-accent), transparent);
-  }
-
-  /* ===== SECTION ===== */
-  section {
-    padding: 5rem 0;
-    position: relative;
-    z-index: 1;
-  }
-
-  .section-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--green-accent);
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .section-label::before {
-    content: '';
-    width: 30px;
-    height: 1px;
-    background: var(--green-accent);
-  }
-
-  .section-title {
-    font-family: 'Tajawal', sans-serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-
-  .section-title span {
-    color: var(--green-accent);
-  }
-
-  .section-desc {
-    color: rgba(255,255,255,0.6);
-    font-size: 1rem;
-    line-height: 1.8;
-    max-width: 600px;
-  }
-
-  /* ===== PROBLEM ===== */
-  .problem-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .problem-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-  }
-
-  .problem-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(34,197,94,0.5);
-  }
-
-  .problem-card::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 60px; height: 60px;
-    background: radial-gradient(circle, rgba(34,197,94,0.15), transparent 70%);
-  }
-
-  .problem-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .problem-title {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--white);
-  }
-
-  .problem-text {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.7;
-  }
-
-  /* ===== SOLUTION ===== */
-  .solution-phases {
-    margin-top: 3rem;
-    display: grid;
-    gap: 1.5rem;
-  }
-
-  .phase {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem 2.5rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    align-items: start;
-    transition: border-color 0.3s;
-  }
-
-  .phase:hover { border-color: rgba(34,197,94,0.4); }
-
-  .phase-num {
-    width: 48px; height: 48px;
-    background: linear-gradient(135deg, var(--green-bright), var(--green-accent));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Tajawal', sans-serif;
-    font-weight: 900;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-  }
-
-  .phase-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--green-glow);
-  }
-
-  .phase-desc {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.7;
-  }
-
-  .phase-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .tag {
-    background: rgba(34,197,94,0.1);
-    border: 1px solid rgba(34,197,94,0.2);
-    border-radius: 100px;
-    padding: 0.2rem 0.75rem;
-    font-size: 0.72rem;
-    color: var(--green-glow);
-    letter-spacing: 0.05em;
-  }
-
-  /* ===== TEAM ===== */
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-
-  .member-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s;
-  }
-
-  .member-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(34,197,94,0.5);
-  }
-
-  .member-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--green-accent), transparent);
-    transform: scaleX(0);
-    transition: transform 0.3s;
-  }
-
-  .member-card:hover::after { transform: scaleX(1); }
-
-  .member-avatar {
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--green-bright), var(--green-accent));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Tajawal', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 900;
-    margin: 0 auto 1rem;
-    border: 2px solid rgba(34,197,94,0.3);
-    position: relative;
-  }
-
-  .member-avatar .status {
-    position: absolute;
-    bottom: 2px; left: 2px;
-    width: 12px; height: 12px;
-    background: var(--green-accent);
-    border-radius: 50%;
-    border: 2px solid var(--green-deep);
-  }
-
-  .member-name {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 800;
-    margin-bottom: 0.25rem;
-  }
-
-  .member-role {
-    font-size: 0.75rem;
-    color: var(--green-accent);
-    letter-spacing: 0.08em;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-
-  .member-tasks {
-    list-style: none;
-    text-align: right;
-  }
-
-  .member-tasks li {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.55);
-    padding: 0.3rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .member-tasks li::before {
-    content: '◆';
-    color: var(--green-accent);
-    font-size: 0.5rem;
-    flex-shrink: 0;
-  }
-
-  /* ===== TIMELINE ===== */
-  .timeline {
-    margin-top: 3rem;
-    position: relative;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    right: 24px;
-    top: 0; bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--green-accent), transparent);
-  }
-
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 1fr 48px;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    align-items: start;
-  }
-
-  .timeline-content {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.5rem;
-    transition: border-color 0.3s;
-  }
-
-  .timeline-content:hover { border-color: rgba(34,197,94,0.4); }
-
-  .timeline-week {
-    font-size: 0.7rem;
-    color: var(--green-accent);
-    letter-spacing: 0.1em;
-    margin-bottom: 0.25rem;
-  }
-
-  .timeline-title {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .timeline-tasks {
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.7;
-  }
-
-  .timeline-dot {
-    width: 48px; height: 48px;
-    background: var(--green-mid);
-    border: 2px solid var(--green-accent);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ===== TECH STACK ===== */
-  .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1rem;
-    margin-top: 3rem;
-  }
-
-  .tech-item {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-    text-align: center;
-    transition: transform 0.3s, border-color 0.3s;
-  }
-
-  .tech-item:hover {
-    transform: translateY(-3px);
-    border-color: rgba(34,197,94,0.4);
-  }
-
-  .tech-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
-
-  .tech-name {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 0.2rem;
-  }
-
-  .tech-use {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 3rem 0;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .footer-logo {
-    font-family: 'Tajawal', sans-serif;
-    font-size: 2rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--green-glow), var(--gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-text {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  .footer-badge {
-    display: inline-block;
-    margin-top: 1rem;
-    background: rgba(34,197,94,0.1);
-    border: 1px solid rgba(34,197,94,0.2);
-    border-radius: 100px;
-    padding: 0.3rem 1rem;
-    font-size: 0.72rem;
-    color: var(--green-accent);
-  }
-
-  /* ===== DIVIDER ===== */
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-    margin: 0;
-  }
-
-  /* ===== ANIMATIONS ===== */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
-  }
-
-  /* Reveal on scroll */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 640px) {
-    .hero-stats { gap: 1.5rem; }
-    .phase { grid-template-columns: 1fr; }
-    .timeline::before { display: none; }
-    .timeline-item { grid-template-columns: 1fr; }
-    .timeline-dot { display: none; }
-  }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:       #f0f4ff;
+  --white:    #ffffff;
+  --ink:      #0f172a;
+  --ink-2:    #1e293b;
+  --ink-3:    #475569;
+  --border:   #e2e8f0;
+
+  --blue:     #2563eb;
+  --blue-l:   #dbeafe;
+  --blue-d:   #1d4ed8;
+
+  --teal:     #0d9488;
+  --teal-l:   #ccfbf1;
+
+  --violet:   #7c3aed;
+  --violet-l: #ede9fe;
+
+  --amber:    #d97706;
+  --amber-l:  #fef3c7;
+
+  --rose:     #e11d48;
+  --rose-l:   #ffe4e6;
+
+  --grad-hero: linear-gradient(135deg, #667eea 0%, #2563eb 40%, #0d9488 100%);
+  --grad-card: linear-gradient(135deg, #f8faff 0%, #eef2ff 100%);
+}
+
+* { font-family: 'Cairo', sans-serif; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); overflow-x: hidden; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--grad-hero);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* animated circles */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  top: -200px; left: -200px;
+  animation: drift 12s ease-in-out infinite alternate;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  bottom: -150px; right: -100px;
+  animation: drift 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(40px, 30px) scale(1.05); }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 8px 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.9);
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+  border-radius: 100px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.dot-live {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity: 1; box-shadow: 0 0 6px #4ade80; }
+  50% { opacity: 0.4; box-shadow: none; }
+}
+
+.hero-name {
+  font-size: clamp(90px, 22vw, 180px);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -5px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.7s 0.1s ease both;
+  text-shadow: 0 8px 40px rgba(0,0,0,0.2);
+}
+
+.hero-en {
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.5);
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+
+.hero-divider {
+  width: 60px; height: 3px;
+  background: rgba(255,255,255,0.4);
+  margin: 40px auto;
+  border-radius: 2px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.hero-tagline {
+  font-size: clamp(15px, 2.2vw, 20px);
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  max-width: 520px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.7s 0.25s ease both;
+}
+
+.hero-tagline strong {
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.7s 0.35s ease both;
+}
+
+.hbadge {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  z-index: 1;
+  animation: fadeUp 1s 0.6s ease both;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100%{transform:scaleY(1);opacity:1}
+  50%{transform:scaleY(0.5);opacity:0.3}
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── STATS ── */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--white);
+  border-bottom: 3px solid var(--blue);
+  box-shadow: 0 4px 24px rgba(37,99,235,0.08);
+}
+
+.sbar-item {
+  padding: 32px 24px;
+  text-align: center;
+  border-left: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.sbar-item:last-child { border-left: none; }
+.sbar-item:hover { background: var(--blue-l); }
+
+.sbar-num {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.sbar-label { font-size: 12px; color: var(--ink-3); line-height: 1.6; }
+
+/* ── SECTION ── */
+.sec { padding: 100px 40px; }
+.wrap { max-width: 960px; margin: 0 auto; }
+
+.sec-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.sec-title {
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.sec-body {
+  font-size: 15px;
+  color: var(--ink-3);
+  line-height: 1.9;
+  max-width: 600px;
+  margin-bottom: 48px;
+}
+
+/* ── PROBLEM CARDS ── */
+.prob-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.prob-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.prob-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 16px 16px 0 0;
+}
+
+.prob-card:nth-child(1)::before { background: var(--blue); }
+.prob-card:nth-child(2)::before { background: var(--rose); }
+.prob-card:nth-child(3)::before { background: var(--amber); }
+.prob-card:nth-child(4)::before { background: var(--violet); }
+
+.prob-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+
+.prob-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.prob-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.prob-card:nth-child(1) .prob-num { color: var(--blue); }
+.prob-card:nth-child(2) .prob-num { color: var(--rose); }
+.prob-card:nth-child(3) .prob-num { color: var(--amber); }
+.prob-card:nth-child(4) .prob-num { color: var(--violet); }
+
+.prob-title { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.prob-text  { font-size: 13px; color: var(--ink-3); line-height: 1.75; }
+
+/* ── SOLUTION PILLARS ── */
+.sol-bg { background: var(--ink-2); }
+
+.sol-bg .sec-title { color: #fff; }
+.sol-bg .sec-body  { color: rgba(255,255,255,0.6); }
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.pillar {
+  border-radius: 16px;
+  padding: 36px 28px;
+  transition: transform 0.25s;
+}
+
+.pillar:hover { transform: translateY(-4px); }
+
+.pillar-1 { background: linear-gradient(135deg, #dbeafe, #bfdbfe); border: 1px solid #93c5fd; }
+.pillar-2 { background: linear-gradient(135deg, #ccfbf1, #99f6e4); border: 1px solid #5eead4; }
+.pillar-3 { background: linear-gradient(135deg, #ede9fe, #ddd6fe); border: 1px solid #c4b5fd; }
+
+.p-num { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 16px; }
+.pillar-1 .p-num { color: var(--blue-d); }
+.pillar-2 .p-num { color: var(--teal); }
+.pillar-3 .p-num { color: var(--violet); }
+
+.p-title { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 10px; }
+.p-text  { font-size: 13px; color: var(--ink-3); line-height: 1.75; margin-bottom: 16px; }
+
+.p-tags  { display: flex; flex-wrap: wrap; gap: 6px; }
+.ptag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+.pillar-1 .ptag { background: #bfdbfe; color: var(--blue-d); }
+.pillar-2 .ptag { background: #99f6e4; color: var(--teal); }
+.pillar-3 .ptag { background: #ddd6fe; color: var(--violet); }
+
+/* ── VISION STATEMENT ── */
+.vision-block {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--violet) 100%);
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.vision-block::before {
+  content: '"';
+  position: absolute;
+  font-size: 300px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  top: -60px; right: 40px;
+  line-height: 1;
+  font-family: 'Cairo', sans-serif;
+}
+
+.vision-text {
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 600;
+  line-height: 1.7;
+  color: #fff;
+  max-width: 700px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 24px;
+}
+
+.vision-text .hi { background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; }
+
+.vision-attr {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── TEAM ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.member {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 36px 28px;
+  border: 1px solid var(--border);
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.member:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+}
+
+.member::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 0 0 20px 20px;
+}
+
+.m-goda::after   { background: linear-gradient(90deg, var(--blue), var(--teal)); }
+.m-nada::after   { background: linear-gradient(90deg, var(--violet), var(--rose)); }
+.m-mohamed::after{ background: linear-gradient(90deg, var(--amber), var(--rose)); }
+
+.m-avatar {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.m-goda   .m-avatar { background: linear-gradient(135deg, var(--blue), var(--teal)); }
+.m-nada   .m-avatar { background: linear-gradient(135deg, var(--violet), var(--rose)); }
+.m-mohamed .m-avatar{ background: linear-gradient(135deg, var(--amber), var(--rose)); }
+
+.m-name { font-size: 17px; font-weight: 800; color: var(--ink); margin-bottom: 4px; }
+.m-role {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.m-goda    .m-role { color: var(--blue); }
+.m-nada    .m-role { color: var(--violet); }
+.m-mohamed .m-role { color: var(--amber); }
+
+.m-tasks { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.m-task {
+  font-size: 12px; color: var(--ink-3);
+  line-height: 1.6;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.m-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.m-goda    .m-dot { background: var(--blue); }
+.m-nada    .m-dot { background: var(--violet); }
+.m-mohamed .m-dot { background: var(--amber); }
+
+/* ── TIMELINE ── */
+.timeline-bg { background: var(--bg); }
+
+.tl-wrap {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tl-item {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px 32px;
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 32px;
+  align-items: center;
+  transition: all 0.25s;
+}
+
+.tl-item:hover {
+  transform: translateX(-6px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+}
+
+.tl-item:nth-child(1) { border-right: 4px solid var(--blue); }
+.tl-item:nth-child(2) { border-right: 4px solid var(--teal); }
+.tl-item:nth-child(3) { border-right: 4px solid var(--violet); }
+.tl-item:nth-child(4) { border-right: 4px solid var(--amber); }
+
+.tl-week-n {
+  font-size: 36px; font-weight: 900;
+  letter-spacing: -1px; line-height: 1;
+}
+
+.tl-item:nth-child(1) .tl-week-n { color: var(--blue); }
+.tl-item:nth-child(2) .tl-week-n { color: var(--teal); }
+.tl-item:nth-child(3) .tl-week-n { color: var(--violet); }
+.tl-item:nth-child(4) .tl-week-n { color: var(--amber); }
+
+.tl-week-l { font-size: 10px; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; }
+.tl-title  { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.tl-text   { font-size: 13px; color: var(--ink-3); line-height: 1.75; }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--grad-hero);
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 52px; font-weight: 900;
+  letter-spacing: -2px; color: #fff;
+  margin-bottom: 12px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.footer-line {
+  width: 40px; height: 3px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.footer-text {
+  font-size: 13px; color: rgba(255,255,255,0.55);
+  line-height: 2;
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.on { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .stats-bar { grid-template-columns: repeat(2,1fr); }
+  .sbar-item:nth-child(2) { border-left: none; }
+  .prob-grid, .pillars, .team-grid { grid-template-columns: 1fr; }
+  .tl-item { grid-template-columns: 70px 1fr; gap: 16px; }
+  .sec { padding: 60px 20px; }
+  .vision-block { padding: 48px 28px; }
+}
 </style>
 </head>
 <body>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">
-    <span class="dot"></span>
-    HSIL Hack-a-thon · أبريل 2026
+  <div class="hero-tag"><span class="dot-live"></span>HSIL Hack-a-thon · أبريل 2026 · Harvard</div>
+  <h1 class="hero-name">ريفا</h1>
+  <div class="hero-en">RIVA HEALTH PLATFORM</div>
+  <div class="hero-divider"></div>
+  <p class="hero-tagline">منصة ذكاء اصطناعي تعمل <strong>بدون إنترنت</strong> لتمكين الرعاية الصحية في المناطق الريفية</p>
+  <div class="hero-badges">
+    <span class="hbadge">دقة 91%</span>
+    <span class="hbadge">2MB فقط</span>
+    <span class="hbadge">Offline-First</span>
+    <span class="hbadge">AES-256</span>
+    <span class="hbadge">4 مستخدمين</span>
   </div>
-
-  <h1 class="hero-logo">ريفا</h1>
-  <p class="hero-subtitle-ar">رعاية افتراضية — Riva Health Platform</p>
-  <p class="hero-tagline">
-    منصة ذكاء اصطناعي تعمل بدون إنترنت، تمكّن المساعدين الصحيين في المناطق الريفية من فرز الحالات وتوجيهها بدقة — وتقليل الزيارات غير الضرورية للمستشفيات.
-  </p>
-
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-number">91%</div>
-      <div class="stat-label">دقة النموذج</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">30%</div>
-      <div class="stat-label">تقليل الضغط على المستشفيات</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">3B+</div>
-      <div class="stat-label">شخص في مناطق ريفية عالمياً</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">0G</div>
-      <div class="stat-label">يعمل بدون إنترنت</div>
-    </div>
-  </div>
-
-  <div class="scroll-hint">تمرير للأسفل</div>
+  <div class="scroll-hint"><span>اكتشف</span><div class="scroll-line"></div></div>
 </section>
 
-<div class="divider"></div>
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="sbar-item">
+    <div class="sbar-num" style="color:var(--blue)">91%</div>
+    <div class="sbar-label">دقة نموذج الفرز الطبي</div>
+  </div>
+  <div class="sbar-item">
+    <div class="sbar-num" style="color:var(--teal)">2MB</div>
+    <div class="sbar-label">حجم النموذج بعد الضغط</div>
+  </div>
+  <div class="sbar-item">
+    <div class="sbar-num" style="color:var(--violet)">30%</div>
+    <div class="sbar-label">تقليل الضغط على المستشفيات</div>
+  </div>
+  <div class="sbar-item">
+    <div class="sbar-num" style="color:var(--amber)">3B+</div>
+    <div class="sbar-label">شخص بدون رعاية صحية كافية</div>
+  </div>
+</div>
 
-<!-- ===== PROBLEM ===== -->
-<section>
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">المشكلة</div>
-      <h2 class="section-title">لماذا <span>ريفا</span>؟</h2>
-      <p class="section-desc">ملايين الأشخاص في المناطق الريفية يعانون من صعوبة الوصول للرعاية الصحية الأساسية — مما يؤدي لتأخر التشخيص ومضاعفات كان يمكن تفاديها.</p>
-    </div>
-
-    <div class="problem-grid">
-      <div class="problem-card reveal">
-        <div class="problem-icon">🏥</div>
-        <div class="problem-title">بُعد المستشفيات</div>
-        <div class="problem-text">المرضى يقطعون مسافات طويلة للحصول على استشارات بسيطة كان يمكن حلها محلياً</div>
+<!-- PROBLEM -->
+<section class="sec reveal">
+  <div class="wrap">
+    <div class="sec-tag" style="background:var(--rose-l);color:var(--rose)">المشكلة</div>
+    <h2 class="sec-title">لماذا ريفا؟</h2>
+    <p class="sec-body">ملايين الأشخاص في المناطق الريفية يعانون من صعوبة الوصول للرعاية الصحية الأساسية — والنتيجة تأخر في التشخيص وأمراض تتفاقم كان يمكن تفاديها.</p>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <span class="prob-icon">🏥</span>
+        <div class="prob-num">01 — المشكلة</div>
+        <div class="prob-title">بُعد المستشفيات</div>
+        <div class="prob-text">المرضى يقطعون ساعات للوصول لاستشارة يمكن تقديمها محلياً — وقت وجهد ومال مهدر يومياً.</div>
       </div>
-      <div class="problem-card reveal">
-        <div class="problem-icon">⏰</div>
-        <div class="problem-title">تأخر التشخيص</div>
-        <div class="problem-text">تأخر اكتشاف الأمراض المزمنة كالسكري والضغط يؤدي لمضاعفات خطيرة وتكاليف أعلى</div>
+      <div class="prob-card">
+        <span class="prob-icon">⏰</span>
+        <div class="prob-num">02 — المشكلة</div>
+        <div class="prob-title">تأخر التشخيص</div>
+        <div class="prob-text">السكري والضغط تُكتشف متأخرة في المناطق الريفية مما يتسبب في مضاعفات كان يمكن تفاديها بالكامل.</div>
       </div>
-      <div class="problem-card reveal">
-        <div class="problem-icon">📶</div>
-        <div class="problem-title">ضعف الشبكة</div>
-        <div class="problem-text">معظم تطبيقات الصحة تتطلب إنترنت قوي — وهو غير متاح في المناطق الريفية</div>
+      <div class="prob-card">
+        <span class="prob-icon">📵</span>
+        <div class="prob-num">03 — المشكلة</div>
+        <div class="prob-title">غياب الإنترنت</div>
+        <div class="prob-text">99% من تطبيقات الصحة تتطلب اتصالاً قوياً — وهو ترف لا تعرفه المناطق الريفية في مصر وأفريقيا.</div>
       </div>
-      <div class="problem-card reveal">
-        <div class="problem-icon">🏛️</div>
-        <div class="problem-title">ضغط على المستشفيات</div>
-        <div class="problem-text">تكدس الحالات البسيطة في المستشفيات الرئيسية يرهق النظام الصحي بأكمله</div>
+      <div class="prob-card">
+        <span class="prob-icon">🚨</span>
+        <div class="prob-num">04 — المشكلة</div>
+        <div class="prob-title">اختناق المستشفيات</div>
+        <div class="prob-text">حالات بسيطة تملأ غرف الطوارئ بينما الحالات الحرجة تنتظر — النظام الصحي كله يدفع الثمن.</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- ===== SOLUTION ===== -->
-<section>
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">الحل</div>
-      <h2 class="section-title">كيف تعمل <span>ريفا</span>؟</h2>
-      <p class="section-desc">منصة متكاملة من مرحلتين — تشخيص أولي ذكي، ثم إحالة دقيقة للتخصص الصحيح</p>
-    </div>
-
-    <div class="solution-phases">
-      <div class="phase reveal">
-        <div class="phase-num">١</div>
-        <div>
-          <div class="phase-title">🧠 الفرز الذكي (Triage AI)</div>
-          <div class="phase-desc">المساعد الصحي يُدخل أعراض المريض بالعامية — النموذج يحللها ويصنف الحالة فوراً: طارئة، تحتاج استشارة، أو رعاية منزلية. يعمل بالكامل بدون إنترنت.</div>
-          <div class="phase-tags">
-            <span class="tag">XGBoost Model</span>
-            <span class="tag">Offline-First</span>
-            <span class="tag">ONNX Export</span>
-            <span class="tag">AES-256 Encryption</span>
-          </div>
+<!-- SOLUTION -->
+<section class="sec sol-bg reveal">
+  <div class="wrap">
+    <div class="sec-tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8)">الحل</div>
+    <h2 class="sec-title">كيف تعمل ريفا؟</h2>
+    <p class="sec-body">منصة متكاملة من ثلاث مراحل — فرز ذكي بدون نت، إحالة سريعة بـ QR، وتحليلات صحية شاملة.</p>
+    <div class="pillars">
+      <div class="pillar pillar-1">
+        <div class="p-num">01 — الفرز</div>
+        <div class="p-title">Triage AI الذكي</div>
+        <div class="p-text">XGBoost يصنف الحالة في أقل من ثانية: طارئة، تحتاج طبيب، أو علاج منزلي — بدقة 91%.</div>
+        <div class="p-tags">
+          <span class="ptag">XGBoost</span><span class="ptag">91%</span><span class="ptag">2MB</span><span class="ptag">Offline</span>
         </div>
       </div>
-
-      <div class="phase reveal">
-        <div class="phase-num">٢</div>
-        <div>
-          <div class="phase-title">📋 الإحالة والمتابعة</div>
-          <div class="phase-desc">الحالات التي تحتاج طبيباً تحصل على QR Code مرجعي يسرّع استقبالها في المستشفى. يتزامن السجل الطبي تلقائياً عند عودة الاتصال.</div>
-          <div class="phase-tags">
-            <span class="tag">QR Code Generator</span>
-            <span class="tag">Background Sync</span>
-            <span class="tag">SQLite Local DB</span>
-          </div>
+      <div class="pillar pillar-2">
+        <div class="p-num">02 — الإحالة</div>
+        <div class="p-title">QR Code الطبي</div>
+        <div class="p-text">كود QR مشفر بـ AES-256 يحمل كامل السجل الطبي ويُسرّع الاستقبال في المستشفى.</div>
+        <div class="p-tags">
+          <span class="ptag">QR Code</span><span class="ptag">AES-256</span><span class="ptag">SQLite</span>
         </div>
       </div>
-
-      <div class="phase reveal">
-        <div class="phase-num">٣</div>
-        <div>
-          <div class="phase-title">📊 داشبورد المتابعة</div>
-          <div class="phase-desc">لوحة تحكم للمستشفيات تعرض الحالات الواردة وتحليلات صحية للمجتمع — ومتابعة الأمراض المزمنة وصحة الأمهات والمدارس.</div>
-          <div class="phase-tags">
-            <span class="tag">Streamlit Dashboard</span>
-            <span class="tag">Plotly Charts</span>
-            <span class="tag">PWA Support</span>
-          </div>
+      <div class="pillar pillar-3">
+        <div class="p-num">03 — التحليل</div>
+        <div class="p-title">داشبوردات ذكية</div>
+        <div class="p-text">صحة الأمهات، الصحة المدرسية، وإحصائيات المجتمع — تُزامن تلقائياً مع عودة النت.</div>
+        <div class="p-tags">
+          <span class="ptag">Random Forest</span><span class="ptag">K-Means</span><span class="ptag">PWA</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- VISION -->
+<div class="vision-block reveal">
+  <div class="wrap">
+    <p class="vision-text">
+      "ريفا ليست مجرد تطبيق — هي <span class="hi">بنية تحتية صحية جديدة</span> للمجتمعات المهمشة. كل قرية تحصل على ريفا تحصل على ما كان حِكراً على المدن: التشخيص المبكر، الإحالة السريعة، والسجل الطبي الموثق."
+    </p>
+    <div class="vision-attr">رؤية منصة ريفا · 2026</div>
+  </div>
+</div>
 
-<!-- ===== TEAM ===== -->
-<section>
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">الفريق</div>
-      <h2 class="section-title">من يبني <span>ريفا</span>؟</h2>
-      <p class="section-desc">فريق متكامل المهارات — طب وذكاء اصطناعي وتطوير وبيزنس</p>
-    </div>
-
+<!-- TEAM -->
+<section class="sec reveal">
+  <div class="wrap">
+    <div class="sec-tag" style="background:var(--violet-l);color:var(--violet)">الفريق</div>
+    <h2 class="sec-title">من يبني ريفا؟</h2>
     <div class="team-grid">
-
-      <div class="member-card reveal">
-        <div class="member-avatar">
-          GE
-          <span class="status"></span>
-        </div>
-        <div class="member-name">Goda Emad</div>
-        <div class="member-role">🧠 AI/ML Engineer</div>
-        <ul class="member-tasks">
-          <li>بناء نماذج XGBoost & Random Forest</li>
-          <li>تصدير النماذج بصيغة ONNX</li>
-          <li>تشفير البيانات AES-256</li>
-          <li>تدريب الـ Notebooks</li>
-          <li>تحليل البيانات واستخراج الأنماط</li>
+      <div class="member m-goda">
+        <div class="m-avatar">GE</div>
+        <div class="m-name">Goda Emad</div>
+        <div class="m-role">AI / ML Engineer</div>
+        <ul class="m-tasks">
+          <li class="m-task"><span class="m-dot"></span>XGBoost و Random Forest و K-Means</li>
+          <li class="m-task"><span class="m-dot"></span>تصدير ONNX وضغط النماذج</li>
+          <li class="m-task"><span class="m-dot"></span>تشفير AES-256-GCM</li>
+          <li class="m-task"><span class="m-dot"></span>FastAPI endpoints</li>
+          <li class="m-task"><span class="m-dot"></span>Voice AI بالعامية</li>
         </ul>
       </div>
-
-      <div class="member-card reveal">
-        <div class="member-avatar">
-          NK
-          <span class="status"></span>
-        </div>
-        <div class="member-name">Nada Khaled</div>
-        <div class="member-role">🌐 Frontend Developer</div>
-        <ul class="member-tasks">
-          <li>بناء واجهة Streamlit</li>
-          <li>تطوير PWA & Service Worker</li>
-          <li>تصميم UI/UX للتطبيق</li>
-          <li>دعم RTL والعربية</li>
-          <li>نشر التطبيق على Vercel</li>
+      <div class="member m-nada">
+        <div class="m-avatar">NK</div>
+        <div class="m-name">Nada Khaled</div>
+        <div class="m-role">Frontend Developer</div>
+        <ul class="m-tasks">
+          <li class="m-task"><span class="m-dot"></span>8 صفحات HTML + PWA</li>
+          <li class="m-task"><span class="m-dot"></span>Service Worker وOffline</li>
+          <li class="m-task"><span class="m-dot"></span>داشبوردات Plotly تفاعلية</li>
+          <li class="m-task"><span class="m-dot"></span>دعم RTL والموبايل</li>
+          <li class="m-task"><span class="m-dot"></span>نشر على Vercel</li>
         </ul>
       </div>
-
-      <div class="member-card reveal">
-        <div class="member-avatar">
-          MG
-          <span class="status"></span>
-        </div>
-        <div class="member-name">Mohamed Gharieb</div>
-        <div class="member-role">💼 Business & Research</div>
-        <ul class="member-tasks">
-          <li>صياغة نموذج العمل</li>
-          <li>تحضير العرض التقديمي</li>
-          <li>تحليل التأثير الاقتصادي</li>
-          <li>أبحاث ميدانية وسياسات</li>
-          <li>التواصل مع الشركاء</li>
+      <div class="member m-mohamed">
+        <div class="m-avatar">MG</div>
+        <div class="m-name">Mohamed Gharieb</div>
+        <div class="m-role">Business & Research</div>
+        <ul class="m-tasks">
+          <li class="m-task"><span class="m-dot"></span>20 شريحة Pitch احترافية</li>
+          <li class="m-task"><span class="m-dot"></span>تحليل 400 مليون جنيه توفير</li>
+          <li class="m-task"><span class="m-dot"></span>محتوى طبي موثق</li>
+          <li class="m-task"><span class="m-dot"></span>30 سؤال وجواب للجنة</li>
+          <li class="m-task"><span class="m-dot"></span>معايير WHO للمدارس</li>
         </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ===== TIMELINE ===== -->
-<section>
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">خطة التنفيذ</div>
-      <h2 class="section-title">خارطة الطريق — <span>شهر واحد</span></h2>
-      <p class="section-desc">خطة يومية منظمة لتسليم مشروع احترافي جاهز للمسابقة</p>
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <div class="timeline-week">الأسبوع الأول</div>
-          <div class="timeline-title">🛠️ التجهيز والتعلم</div>
-          <div class="timeline-tasks">تجهيز بيئة الشغل · تعلم XGBoost · تنزيل PIMA Dataset · توزيع المهام على الفريق</div>
-        </div>
-        <div class="timeline-dot">١</div>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <div class="timeline-week">الأسبوع الثاني</div>
-          <div class="timeline-title">🧠 بناء النموذج</div>
-          <div class="timeline-tasks">تنظيف البيانات · Feature Engineering · تدريب Triage Model · تقييم الدقة وتحسينها · تصدير ONNX</div>
-        </div>
-        <div class="timeline-dot">٢</div>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <div class="timeline-week">الأسبوع الثالث</div>
-          <div class="timeline-title">🌐 بناء التطبيق</div>
-          <div class="timeline-tasks">واجهة Streamlit · QR Code Generator · Offline Storage · ربط النموذج بالواجهة · اختبار شامل</div>
-        </div>
-        <div class="timeline-dot">٣</div>
-      </div>
-
-      <div class="timeline-item reveal">
-        <div class="timeline-content">
-          <div class="timeline-week">الأسبوع الرابع</div>
-          <div class="timeline-title">🏆 التجهيز للفوز</div>
-          <div class="timeline-tasks">Pitch Deck احترافي · إجابات أسئلة اللجنة · تدريب على العرض · Demo كامل · تجهيز نهائي</div>
-        </div>
-        <div class="timeline-dot">٤</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ===== TECH STACK ===== -->
-<section>
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">التقنيات</div>
-      <h2 class="section-title">الـ <span>Tech Stack</span></h2>
-    </div>
-
-    <div class="tech-grid">
-      <div class="tech-item reveal">
-        <div class="tech-icon">🐍</div>
-        <div class="tech-name">Python</div>
-        <div class="tech-use">اللغة الأساسية</div>
-      </div>
-      <div class="tech-item reveal">
-        <div class="tech-icon">⚡</div>
-        <div class="tech-name">XGBoost</div>
-        <div class="tech-use">نموذج الفرز</div>
-      </div>
-      <div class="tech-item reveal">
-        <div class="tech-icon">🔄</div>
-        <div class="tech-name">ONNX</div>
-        <div class="tech-use">نشر النموذج Offline</div>
-      </div>
-      <div class="tech-item reveal">
-        <div class="tech-icon">🎯</div>
-        <div class="tech-name">Streamlit</div>
-        <div class="tech-use">واجهة التطبيق</div>
-      </div>
-      <div class="tech-item reveal">
-        <div class="tech-icon">🔐</div>
-        <div class="tech-name">AES-256</div>
-        <div class="tech-use">تشفير البيانات</div>
-      </div>
-      <div class="tech-item reveal">
-        <div class="tech-icon">📱</div>
-        <div class="tech-name">PWA</div>
-        <div class="tech-use">تطبيق بدون نت</div>
-      </div>
-      <div class="tech-item reveal">
-        <div class="tech-icon">🗄️</div>
-        <div class="tech-name">SQLite</div>
-        <div class="tech-use">قاعدة بيانات محلية</div>
-      </div>
-      <div class="tech-item reveal">
-        <div class="tech-icon">🚀</div>
-        <div class="tech-name">Vercel</div>
-        <div class="tech-use">نشر التطبيق</div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- TIMELINE -->
+<section class="sec timeline-bg reveal">
+  <div class="wrap">
+    <div class="sec-tag" style="background:var(--amber-l);color:var(--amber)">خطة التنفيذ</div>
+    <h2 class="sec-title">شهر واحد — 4 أسابيع</h2>
+    <div class="tl-wrap">
+      <div class="tl-item">
+        <div><div class="tl-week-n">01</div><div class="tl-week-l">الأسبوع</div></div>
+        <div><div class="tl-title">التجهيز والتعلم</div><div class="tl-text">إعداد البيئة، تنزيل PIMA Dataset، توزيع المهام، إنشاء GitHub Repository.</div></div>
+      </div>
+      <div class="tl-item">
+        <div><div class="tl-week-n">02</div><div class="tl-week-l">الأسبوع</div></div>
+        <div><div class="tl-title">بناء نموذج الفرز</div><div class="tl-text">تنظيف البيانات، تدريب XGBoost، تحقيق دقة 91%، تصدير ONNX بحجم 2MB.</div></div>
+      </div>
+      <div class="tl-item">
+        <div><div class="tl-week-n">03</div><div class="tl-week-l">الأسبوع</div></div>
+        <div><div class="tl-title">بناء التطبيق والنشر</div><div class="tl-text">FastAPI + HTML، QR Code، Offline Storage، نشر على Vercel، URL جاهز للحكام.</div></div>
+      </div>
+      <div class="tl-item">
+        <div><div class="tl-week-n">04</div><div class="tl-week-l">الأسبوع</div></div>
+        <div><div class="tl-title">التجهيز للهاكاثون</div><div class="tl-text">Pitch Deck، إجابات أسئلة اللجنة، Demo كامل، تدريب على العرض مع الفريق.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container">
-    <div class="footer-logo">ريفا</div>
-    <div class="footer-text">صحة أفضل في متناول يدك — لدعم المجتمعات الأكثر احتياجاً</div>
-    <div class="footer-badge">HSIL Hack-a-thon · أبريل 2026 · Harvard Health Systems Innovation Lab</div>
+<!-- FOOTER -->
+<footer class="footer reveal">
+  <div class="footer-logo">ريفا</div>
+  <div class="footer-line"></div>
+  <div class="footer-text">
+    Goda Emad · Nada Khaled · Mohamed Gharieb<br>
+    HSIL Hack-a-thon · أبريل 2026 · Harvard Health Systems Innovation Lab
   </div>
 </footer>
 
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  reveals.forEach(el => observer.observe(el));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>
